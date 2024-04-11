@@ -1,0 +1,49 @@
+-- Create the purogen database
+CREATE DATABASE IF NOT EXISTS purogen;
+
+-- Switch to the purogen database
+USE purogen;
+
+-- Create the Users table
+CREATE TABLE IF NOT EXISTS Users (
+    user_id VARCHAR(36) PRIMARY KEY,
+    username VARCHAR(50) UNIQUE,
+	first_name VARCHAR(50) ,
+	last_name VARCHAR(50),
+	phone_number VARCHAR(15) UNIQUE,
+    password VARCHAR(255),
+    email VARCHAR(100) UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS User_Data (
+    user_data_id VARCHAR(36) PRIMARY KEY,
+    user_id VARCHAR(36),
+    recipe VARCHAR(50),
+    weight INT,
+    mass VARCHAR(50),
+    process VARCHAR(50),
+    strain VARCHAR(50),
+    operator VARCHAR(50),
+    terpene_name VARCHAR(50),
+    manufacturer_name VARCHAR(50),
+    injection_volume INT,
+    injections VARCHAR(50),
+    customer_name VARCHAR(50),
+    customer_id VARCHAR(50),
+    Machine_ID VARCHAR(50),
+    Machine_Location VARCHAR(50),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
+);
+
+-- Create the User_Sessions table
+CREATE TABLE IF NOT EXISTS User_Sessions (
+    session_id VARCHAR(255) PRIMARY KEY,
+    user_id VARCHAR(36),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expires_at TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
+);
