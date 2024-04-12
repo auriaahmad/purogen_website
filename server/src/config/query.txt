@@ -8,11 +8,12 @@ USE purogen;
 CREATE TABLE IF NOT EXISTS Users (
     user_id VARCHAR(36) PRIMARY KEY,
     username VARCHAR(50) UNIQUE,
-	first_name VARCHAR(50) ,
-	last_name VARCHAR(50),
-	phone_number VARCHAR(15) UNIQUE,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    phone_number VARCHAR(15) UNIQUE,
     password VARCHAR(255),
     email VARCHAR(100) UNIQUE,
+    admin BOOLEAN DEFAULT FALSE, -- New column for admin status
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

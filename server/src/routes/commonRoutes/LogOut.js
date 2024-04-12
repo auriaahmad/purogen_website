@@ -2,12 +2,13 @@
 
 const express = require('express');
 const router = express.Router();
-const  UserSession  = require('../models/UserSessions');
+const  UserSession  = require('../../models/UserSessions');
 
 // Route to handle user logout
 router.post('/', async (req, res) => {
     try {
         // Extract the session ID from the request
+        // console.log(req);
         const { session_id } = req.body;
 
         // Delete the session record from the database

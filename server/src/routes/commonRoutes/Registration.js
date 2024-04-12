@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
-const  User  = require('../models/User');
-const validator = require('../middleware/dataValidator');
+const  User  = require('../../models/User');
+const validator = require('../../middleware/dataValidator');
 
 // Route to register a new user
-router.post('/', validator, async (req, res) => {
+router.post('/', validator,  async (req, res) => {
     try {
-        const { username, first_name, last_name, phone_number, password, email } = req.body;
+        const { username, first_name, last_name, phone_number, password, email, admin } = req.body;
 
         // Check if username already exists
         let existingUser = await User.findOne({ where: { username } });
@@ -42,7 +42,8 @@ router.post('/', validator, async (req, res) => {
             last_name,
             phone_number,
             password: hashedPassword,
-            email
+            email,
+            admin
         });
 
         res.status(201).json({ message: 'User registered successfully', user: newUser });
