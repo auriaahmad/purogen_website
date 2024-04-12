@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 const {sequelize} = require('../config/database');
 const User = require('./User');
 
-const UserSession = sequelize.define('User_Session', {
+const UserSession = sequelize.define('User_Sessions', {
     session_id: {
         type: DataTypes.STRING(255),
         primaryKey: true
@@ -21,6 +21,7 @@ const UserSession = sequelize.define('User_Session', {
         type: DataTypes.DATE
     }
 }, {
+    tableName: 'User_Sessions',
     timestamps: false // Disable automatic timestamping
 });
 

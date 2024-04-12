@@ -5,8 +5,8 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
-const User = require('../models/User');
-const UserSession  = require('../models/UserSessions');
+const User = require('../../models/User');
+const UserSession  = require('../../models/UserSessions');
 require('dotenv').config(); 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -30,16 +30,13 @@ router.post('/', async (req, res) => {
 
         // Generate JWT token
         const token = jwt.sign({ user_id: user.user_id }, JWT_SECRET, { expiresIn: '30s' });
-        console.log(token);
-
+    
         // Generate session ID
         const session_id = uuidv4();
-        console.log(session_id);
-
+        
         // Calculate session expiration time
         const expires_at = new Date(Date.now() + 30 * 1000); // 30 seconds from now
-        console.log(expires_at);
-
+        
         // Create session record in the database
         await UserSession.create({
             session_id,
@@ -48,7 +45,7 @@ router.post('/', async (req, res) => {
         });
 
         // Set JWT token as a cookie
-        res.cookie('token', token, { httpOnly: true, expires: expires_at });
+        res.cookie('token', token, { httpOnly: true, expires: expires_at, secure: true });
 
         // Return success response
         res.status(200).json({ message: 'Sign-in successful', token });

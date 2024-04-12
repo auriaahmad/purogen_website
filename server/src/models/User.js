@@ -36,6 +36,10 @@ const User = sequelize.define('User', {
         allowNull: false,
         unique: true
     },
+    admin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false // Default value for admin status
+    },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
