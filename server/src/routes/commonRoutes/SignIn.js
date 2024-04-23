@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
         console.log(username, password);
 
         // Find the user by username
-        let user = await User.findOne({ where: { username } });
+        const user = await User.findOne({ where: { username } });
         if (!user) {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
@@ -45,13 +45,10 @@ router.post('/', async (req, res) => {
         });
 
         // Set JWT token as a cookie
-        res.cookie('cookie_purogen', cookie_purogen, { httpOnly: true, expires: expires_at, secure: true });
+        res.cookie('purogen_cookie', token, { httpOnly: true, expires: expires_at, secure: true });
 
         // Return success response
-        res.status(200).json({ message: 'Sign-in successful', cookie_purogen });
-        // user =  JSON.parse(JSON.stringify(user));
-        // delete user.password;
-        // res.status(200).json({ message: 'Sign-in successful', user  });
+        res.status(200).json({ message: 'Sign-in successful', token });
     } catch (error) {
         console.error('Error signing in:', error);
         res.status(500).json({ error: 'Error signing in' });

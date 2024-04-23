@@ -1,8 +1,4 @@
-// export const loginSuccess = (user) => ({
-//     type: 'LOGIN_SUCCESS',
-//     payload: { user },
-//   });
-  
-//   export const logout = () => ({
-//     type: 'LOGOUT',
+// export const saveAuthToken = (token) => ({
+//     type: 'SAVE_AUTH_TOKEN',
+//     payload: { token },
 //   });

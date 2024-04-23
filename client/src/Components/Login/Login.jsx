@@ -9,6 +9,8 @@ import { FaUserShield } from 'react-icons/fa'
 import { BsFillShieldLockFill } from 'react-icons/bs'
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import purogenLogo from '../../Assets/purogen.png'
+import { useDispatch } from 'react-redux';
+// import { saveAuthToken } from '../../store/actions/authActions';
 
 
 
@@ -18,6 +20,7 @@ const Login = () => {
     const navigateTo = useNavigate();
     const [loginStatus, setLoginStatus] = useState('');
     const [statusHolder, setStatusHolder] = useState('message');
+    // const dispatch = useDispatch();
 
     const loginUser = async (e) => {
         e.preventDefault();
@@ -29,26 +32,23 @@ const Login = () => {
             
             // Check if the response status is 200 (OK)
             if (response.status === 200) {
-                const { message, user } = response.data;
-                setLoginStatus(message);
-                console.log("token",user);
-                console.log("message",message);
-                localStorage.setItem('user',JSON.stringify(user));
+                const token = response.data.token;
+                console.log("token is saving here");
+                // console.log(data);
+                // dispatch(saveAuthToken(token));
+                
                 // Navigate to dashboard after successful login
                 navigateTo('/dashboard');
             } else {
                 // Handle other response status codes
                 setLoginStatus('Invalid username or password');
             }
-        } catch (error) {z
+        } catch (error) {
             // Handle network or other errors
             console.error('Error:', error);
             setLoginStatus('Network error occurred');
         }
     };
-
-    
-
 
     useEffect(() => {
         if (loginStatus !== '') {
