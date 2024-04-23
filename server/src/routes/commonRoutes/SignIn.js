@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
         });
 
         // Set JWT token as a cookie
-        res.cookie('token', token, { httpOnly: true, expires: expires_at, secure: true });
+        res.cookie('purogen_cookie', token, { httpOnly: true, expires: expires_at, secure: true });
 
         // Return success response
         res.status(200).json({ message: 'Sign-in successful', token });

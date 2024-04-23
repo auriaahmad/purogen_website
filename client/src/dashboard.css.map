@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "dashboard.css",
+	"sources": [
+		"styles/dashboard/dashboard.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,UAAU,CAAC;EACP,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,IAAI;EACX,eAAe,EAAE,MAAM;EACvB,MAAM,EAAE,IAAI,GASf;EAbD,AAMI,UANM,CAMN,mBAAmB,CAAC;IAChB,MAAM,EAAE,IAAI;IACZ,KAAK,EAAE,GAAG;IACV,aAAa,EAAE,IAAI;IACnB,QAAQ,EAAE,MAAM;IAChB,UAAU,EAAE,CAAC,CAAC,GAAG,CAAC,IAAI,CAAC,OAAkB,GAC5C"
+}
