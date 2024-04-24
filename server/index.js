@@ -14,7 +14,7 @@ const verifyToken = require('./src/middleware/tokenValidator')
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
 app.use(verifyToken);
 

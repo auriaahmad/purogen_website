@@ -9,35 +9,32 @@ import { FaUserShield } from 'react-icons/fa'
 import { BsFillShieldLockFill } from 'react-icons/bs'
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import purogenLogo from '../../Assets/purogen.png'
-import { useDispatch } from 'react-redux';
-// import { saveAuthToken } from '../../store/actions/authActions';
-
-
-
+import useUserStore from '../../store/store';
 const Login = () => {
     const [loginUserName, setLoginUserName] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const navigateTo = useNavigate();
     const [loginStatus, setLoginStatus] = useState('');
     const [statusHolder, setStatusHolder] = useState('message');
-    // const dispatch = useDispatch();
-
+    const login = useUserStore((state) => state.login);
+    
     const loginUser = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3006/signin', {
                 username: loginUserName,
                 password: loginPassword
-            });
+            },{withCredentials: true, credentials: 'include'});
             
             // Check if the response status is 200 (OK)
             if (response.status === 200) {
-                const token = response.data.token;
-                console.log("token is saving here");
-                // console.log(data);
-                // dispatch(saveAuthToken(token));
+                const userData = response.data;
                 
-                // Navigate to dashboard after successful login
+                // login(userData);
+                console.log("token is saving here", userData);
+                login(userData);
+                
+               
                 navigateTo('/dashboard');
             } else {
                 // Handle other response status codes
@@ -76,19 +73,11 @@ const Login = () => {
                         <h2 className="title">THE SCIENCE OF PURE!</h2>
                         <p>TECHNOLOGY WORKING FOR YOU</p>
                     </div>
-
-                    {/* <div className="footerDiv flex">
-                        <span className="text">Don't have an account?</span>
-                        <Link to={'/register'}>
-                            <button className="btn">Sign Up</button>
-                        </Link>
-                    </div> */}
                 </div>
 
                 <div className="formDiv flex">
                     <div className="headerDiv">
                         <img src={purogenLogo} alt="Logo Image" />
-                        {/* <br /> */}
                         <h3>Welcome Back!</h3>
                     </div>
 

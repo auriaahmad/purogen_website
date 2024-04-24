@@ -1,6 +1,6 @@
 import React from 'react'
-import './sidebar.css'
-import purogenLogo from '../../../Assets/purogen.png'
+import '../../../App.css'
+import purogenLogo from '../../../Assets/purogen_horizontal.png'
 import { IoMdSpeedometer } from 'react-icons/io'
 import { MdDeliveryDining, MdOutlineExplore, MdOutlinePermContactCalendar } from 'react-icons/md'
 import { BsTrophy, BsCreditCard2Front, BsQuestionCircle } from 'react-icons/bs'
@@ -13,7 +13,7 @@ const Sidebar = () => {
 
       <div className="logoDiv flex">
         <img src={purogenLogo} alt="Logo" />
-        <h2>Planti.</h2>
+        {/* <h2>P.</h2> */}
       </div>
 
       <div className="menuDiv">
