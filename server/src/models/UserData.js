@@ -9,6 +9,7 @@ const UserData = sequelize.define('User_Data', {
         primaryKey: true
     },
     user_id: DataTypes.STRING,
+    username: DataTypes.STRING,
     recipe: DataTypes.STRING,
     weight: DataTypes.INTEGER,
     mass: DataTypes.STRING,
@@ -37,4 +38,5 @@ const UserData = sequelize.define('User_Data', {
     timestamps: false // Disable Sequelize's default timestamps (created_at, updated_at)
 });
 UserData.belongsTo(User, { foreignKey: 'user_id', targetKey: 'user_id' });
+UserData.belongsTo(User, { foreignKey: 'username', targetKey: 'username' });
 module.exports = UserData;

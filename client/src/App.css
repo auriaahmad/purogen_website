@@ -86,10 +86,10 @@ video {
 .registerPage {
   height: 100%;
   width: 100%;
-  margin: auto;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 7px 50px #d6dfd5; }
+  box-shadow: 0 7px 50px #d6dfd5;
+  gap: 100px; }
   .registerPage .container {
     height: 100%;
     width: 60%;
@@ -508,9 +508,8 @@ video {
     padding: 1.5rem 1.5rem 0;
     cursor: pointer; }
     .sideBar .logoDiv img {
-      max-width: 20px;
+      max-width: 200px;
       margin-right: .5rem;
-      background: var(--inputColor);
       border-radius: 2px;
       padding: .2rem; }
     .sideBar .logoDiv h2 {
@@ -620,7 +619,7 @@ video {
     margin: auto;
     padding: 1.5rem .5rem 0; }
     .sideBar .logoDiv img {
-      max-width: 50px;
+      max-width: 200px;
       margin: 0;
       border-radius: 10px;
       padding: .5rem; }

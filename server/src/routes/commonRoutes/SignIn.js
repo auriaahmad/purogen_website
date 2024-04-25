@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ user_id: user.user_id }, JWT_SECRET, { expiresIn: '30s' });
+        const token = jwt.sign({ user_id: user.user_id }, JWT_SECRET, { expiresIn: '500s' });
 
         // Delete password field from user object
         delete user.password;
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
         const session_id = uuidv4();
 
         // Calculate session expiration time
-        const expires_at = new Date(Date.now() + 5 * 1000); // 30 seconds from now
+        const expires_at = new Date(Date.now() + 500 * 1000); // 30 seconds from now
 
         // Create session record in the database
         await UserSession.create({
