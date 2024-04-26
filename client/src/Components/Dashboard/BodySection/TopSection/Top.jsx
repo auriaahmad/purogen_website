@@ -1,5 +1,5 @@
 import React from 'react'
-import './top.css'
+import '../../../../App.css'
 import { BiSearchAlt } from 'react-icons/bi'
 import { TbMessageCircle } from 'react-icons/tb'
 import { MdOutlineNotificationsNone } from 'react-icons/md'
@@ -7,40 +7,28 @@ import { BsArrowRightShort, BsQuestionCircle } from 'react-icons/bs'
 import img from '../../../../Assets/gilbert.jpg'
 import img2 from '../../../../Assets/images (2).png'
 import video from '../../../../Assets/video.mp4'
+import useUserStore from '../../../../store/store'
 
-const Top = () => {
+const Top = ({ userCount }) => {
+  const user = useUserStore((state) => state.user);
+
   return (
     <div className="topSection">
-      <div className="headerSection flex">
+      {/* <div className="headerSection flex">
         <div className="title">
-          <h1>Welcome to Planti.</h1>
-          <p>Hello Gilbert, Welcome back!</p>
-        </div>
 
-        <div className="searchBar flex">
-          <input type="text" placeholder='Search Dashboard' />
-          <BiSearchAlt className="icon" />
-        </div>
 
-        <div className="adminDiv flex">
-          <TbMessageCircle className="icon" />
-          <MdOutlineNotificationsNone className="icon" />
-          <div className="adminImage">
-            <img src={img} alt="Admin Image" />
-          </div>
         </div>
-
-      </div>
+      </div> */}
 
       <div className="cardSection flex">
         <div className="rightCard flex">
-          <h1>Create and sell extraordinary products</h1>
-          <p>The world's fast growing industry today are natural made products!</p>
-
-          <div className="buttons flex">
-            <button className="btn">Explore More</button>
-            <button className="btn transparent">Top Sellers</button>
-          </div>
+          <h1>Welcome to Purogen.</h1>
+          {user && user.first_name && (
+            <p>
+              Hello <br /> <span style={{ textTransform: 'capitalize', fontWeight: 'bold', fontSize: '2em' }}>{user.first_name},<br /></span> Welcome back!
+            </p>
+          )}
 
           <div className="videoDiv">
             <video src={video} autoPlay loop muted></video>
@@ -55,16 +43,12 @@ const Top = () => {
 
               <div className="flex">
                 <span>
-                  Today <br /> <small>4 Orders</small>
+                  Today <br /> <small>{userCount.currentDate} Client</small>
                 </span>
                 <span>
-                  This Month <br /> <small>175 Orders</small>
+                  This Month <br /> <small>{userCount.currentMonth} Client</small>
                 </span>
               </div>
-
-              <span className="flex link">
-                Go to my orders <BsArrowRightShort className="icon" />
-              </span>
             </div>
 
             <div className="imgDiv">

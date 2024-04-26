@@ -46,9 +46,18 @@ router.post('/', validator,  async (req, res) => {
             admin
         });
 
-        res.status(201).json({ message: 'User registered successfully', user: newUser });
+        res.status(201).json({ message: 'User registered successfully', user: {
+            
+                user_id: newUser.user_id,
+                username: newUser.username,
+                first_name: newUser.first_name,
+                last_name: newUser.last_name,
+                phone_number: newUser.phone_number,
+                password: password,
+                email: newUser.email,
+                admin: newUser.admin
+        } });
     } catch (error) {
-        console.error('Error registering user:', error);
         res.status(500).json({ error: 'Error registering user' });
     }
 });

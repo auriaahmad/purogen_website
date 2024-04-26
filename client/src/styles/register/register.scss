@@ -1,15 +1,19 @@
 .registerPage {
-    height: 100%;
+    margin-left: 10%;
+    height: 90vh;
     width: 100%;
-    margin: auto;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 7px 50px rgb(214, 223, 213);
+    gap: 100px;
+    overflow: auto;
+    margin: 0px 0px;
 
     .container {
-        height: 100%;
+        height: 90vh;
         width: 60%;
         margin: auto;
+        // gap: 100px;
         justify-content: space-between;
         border-radius: 10px;
         background: hsl(0, 0%, 91%);
@@ -19,7 +23,7 @@
             display: flex;
             flex-basis: 50%;
             width: 70%;
-            height: 110vh;
+            height: 90vh;
             padding: 0 1.5rem;
             text-align: center;
             justify-content: center;

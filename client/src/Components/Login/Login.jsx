@@ -9,7 +9,7 @@ import { FaUserShield } from 'react-icons/fa'
 import { BsFillShieldLockFill } from 'react-icons/bs'
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import purogenLogo from '../../Assets/purogen.png'
-import { useDispatch } from 'react-redux';
+import useUserStore from '../../store/store';
 // import { saveAuthToken } from '../../store/actions/authActions';
 
 
@@ -21,6 +21,8 @@ const Login = () => {
     const [loginStatus, setLoginStatus] = useState('');
     const [statusHolder, setStatusHolder] = useState('message');
     // const dispatch = useDispatch();
+    const login = useUserStore((state) => state.login);
+    axios.defaults.withCredentials = true;
 
     const loginUser = async (e) => {
         e.preventDefault();
@@ -32,8 +34,9 @@ const Login = () => {
             
             // Check if the response status is 200 (OK)
             if (response.status === 200) {
-                const token = response.data.token;
-                console.log("token is saving here");
+                const userData = response.data;
+                // console.log("token is saving here",token);
+                login(userData);
                 // console.log(data);
                 // dispatch(saveAuthToken(token));
                 

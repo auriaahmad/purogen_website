@@ -23,7 +23,7 @@
 }
 
 .lisitingSection {
-    flex-basis: 70%;
+    flex-basis: 100%;
 
     .heading {
         width: 100%;
@@ -146,6 +146,104 @@
         }
     }
 }
+
+// modal
+// modalStyles.scss
+
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 90%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+
+.table-container {
+    height: 450px;
+    /* Set the fixed height as per your requirement */
+    overflow: auto;
+    /* Enable scrolling when content overflows */
+    position: relative;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th,
+        td {
+            padding: 10px;
+            // border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2; // Light gray background for header row
+            position: sticky;
+            top: 0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; // Light gray background for even rows
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff; // White background for odd rows
+        }
+        tr:hover {
+            background-color: #ccc; // Change background color on hover
+            cursor: pointer; // Change cursor to hand sign on hover
+          }
+    }
+}
+
+.searchBar {
+    margin-left: 5px;
+    padding: 1rem 2rem;
+    background: var(--whiteColor);
+    border-radius: 5px;
+    gap: 1rem;
+    box-shadow: 0 2px 4px var(--inputColor);
+    display: flex;
+    align-items: center;
+
+    label {
+        font-weight: bold;
+    }
+
+    select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        flex: 1;
+        margin-left: 5px;
+    }
+
+    .icon {
+        color: var(--textColor);
+
+        &:hover {
+            color: var(--PrimaryColor);
+        }
+    }
+}
+
+
+
 
 // Media Queries
 

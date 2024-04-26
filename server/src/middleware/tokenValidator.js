@@ -9,7 +9,8 @@ const verifyToken = (req, res, next) => {
             // Skip the middleware and move to the next middleware/route handler
             return next();
         }
-        const token = req.cookies.token;
+        const token = req.cookies.purogen_cookie;
+        console.log(token);
         if (!token) {
             return res.status(401).json({ error: 'Unauthorized: No token provided' });
         }

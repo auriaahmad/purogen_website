@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Register.css';
+// import './Register.css';
 import '../../App.css'
 import { Link, useNavigate } from 'react-router-dom';
 // import axios from 'axios'
@@ -11,7 +11,8 @@ import { BsFillShieldLockFill } from 'react-icons/bs'
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import { MdMarkEmailRead } from 'react-icons/md'
 import purogenLogo from '../../Assets/purogen.png'
-
+// import Activity from '../Dashboard/BodySection/ActivitySection/Activity';
+import RegisteredUserInfo from './RegisteredUserInfo';
 
 
 const Register = () => {
@@ -22,6 +23,9 @@ const Register = () => {
     const [lastname, setLastname] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [admin, setAdmin] = useState(false);
+    const [newRegUser, setNewRegUser] = useState({});
+
+
     const navigateTo = useNavigate();
 
 
@@ -30,7 +34,7 @@ const Register = () => {
         console.log("here create user");
         e.preventDefault();
         try {
-            await axios.post('http://localhost:3006/registerUser', {
+            const response = await axios.post('http://localhost:3006/registerUser', {
                 email: email,
                 username: userName,
                 password: password,
@@ -39,6 +43,8 @@ const Register = () => {
                 phone_number: phoneNumber,
                 admin: admin
             });
+            console.log("Response:", response.data);
+            setNewRegUser(response.data.user);
 
             // Assuming navigateTo, setEmail, setUserName, and setPassword are properly defined
             // navigateTo('/');
@@ -63,7 +69,10 @@ const Register = () => {
                     <video src={video} autoPlay muted loop></video>
 
                     <div className="textDiv">
+
+                        <br />
                         <img src={purogenLogo} alt="Purogen Logo" />
+                        <br />
                         <h2 className="title">Create New Users Here!</h2>
                         <p>Assign Roles As Admin or Client!</p>
 
@@ -84,7 +93,7 @@ const Register = () => {
                     </div> */}
 
                     <form action="" className="form grid">
-                        
+
                         <div className="inputDiv">
                             <br />
                             <label htmlFor="email">Email</label>
@@ -175,8 +184,8 @@ const Register = () => {
 
                     </form>
                 </div>
-
             </div>
+            <RegisteredUserInfo newUser={newRegUser}/>
         </div>
     )
 }
