@@ -38,29 +38,6 @@
             }
         }
 
-        .searchBar {
-            padding: 1rem 2rem;
-            background: var(--whiteColor);
-            border-radius: 5px;
-            gap: 1rem;
-            box-shadow: 0 2px 4px var(--inputColor);
-
-            input {
-                border: none;
-                outline: none;
-                background: none;
-            }
-
-            .icon {
-                color: var(--textColor);
-
-                &:hover {
-                    color: var(--PrimaryColor);
-                }
-            }
-        }
-
-
         .adminDiv {
             gap: 1rem;
 
@@ -95,7 +72,7 @@
 
         .rightCard {
             position: relative;
-            flex-basis: 70%;
+            flex-basis: 100%;
             height: 200px;
             flex-direction: column;
             align-items: flex-start;
@@ -164,7 +141,7 @@
         }
 
         .leftCard {
-            flex-basis: 50%;
+            flex-basis: 40%;
 
             .main {
                 position: relative;

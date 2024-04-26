@@ -26,6 +26,9 @@ router.post('/', async (req, res) => {
         if (!isPasswordValid) {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
+        if (!user.admin){
+            return res.status(401).json({ error: 'Only Admin Access' });
+        }
 
         // Generate JWT token
         const token = jwt.sign({ user_id: user.user_id }, JWT_SECRET, { expiresIn: '500s' });
@@ -40,7 +43,7 @@ router.post('/', async (req, res) => {
         const session_id = uuidv4();
 
         // Calculate session expiration time
-        const expires_at = new Date(Date.now() + 500 * 1000); // 30 seconds from now
+        const expires_at = new Date(Date.now() + 500 * 1000); // 10 seconds from now
 
         // Create session record in the database
         await UserSession.create({

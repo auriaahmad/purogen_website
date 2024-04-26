@@ -23,6 +23,9 @@ const Register = () => {
     const [lastname, setLastname] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [admin, setAdmin] = useState(false);
+    const [newRegUser, setNewRegUser] = useState({});
+
+
     const navigateTo = useNavigate();
 
 
@@ -31,7 +34,7 @@ const Register = () => {
         console.log("here create user");
         e.preventDefault();
         try {
-            await axios.post('http://localhost:3006/registerUser', {
+            const response = await axios.post('http://localhost:3006/registerUser', {
                 email: email,
                 username: userName,
                 password: password,
@@ -40,6 +43,8 @@ const Register = () => {
                 phone_number: phoneNumber,
                 admin: admin
             });
+            console.log("Response:", response.data);
+            setNewRegUser(response.data.user);
 
             // Assuming navigateTo, setEmail, setUserName, and setPassword are properly defined
             // navigateTo('/');
@@ -64,7 +69,7 @@ const Register = () => {
                     <video src={video} autoPlay muted loop></video>
 
                     <div className="textDiv">
-                        
+
                         <br />
                         <img src={purogenLogo} alt="Purogen Logo" />
                         <br />
@@ -180,7 +185,7 @@ const Register = () => {
                     </form>
                 </div>
             </div>
-            <RegisteredUserInfo />
+            <RegisteredUserInfo newUser={newRegUser}/>
         </div>
     )
 }

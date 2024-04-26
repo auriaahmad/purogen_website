@@ -13,15 +13,16 @@ const signin = require('./src/routes/commonRoutes/SignIn');
 const logout = require('./src/routes/commonRoutes/LogOut');
 const verifyToken = require('./src/middleware/tokenValidator')
 
-// Middleware
-app.use(express.json());
-app.use(cors({ origin: true, credentials: true }));
-// app.use(cookieParser());
-// app.use(verifyToken);
-
 // Database Connection
 const { testConnection } = require('./src/config/database');
 testConnection();
+
+// Middleware
+app.use(express.json());
+app.use(cors({ origin: true, credentials: true }));
+app.use(cookieParser());
+app.use(verifyToken);
+
 
 app.use('/alluserdata', all_recipe_data);
 app.use('/users', all_users_profiles);
