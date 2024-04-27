@@ -1,17 +1,14 @@
-// // privateRoutes.js
-// import React from 'react';
-// import ProtectedRoute from './ProtectedRoute';
-// import Dashboard from '../Components/Dashboard/Dashboard';
-// import Register from '../Components/Register/Register';
-// import { Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { Route, Navigate } from 'react-router-dom';
+import useUserStore from '../store/store';
 
-// const PrivateRoutes = () => {
-//     return (
-//         <Routes>
-//             <Route path="/dashboard/*" element={<ProtectedRoute component={Dashboard} />} />
-//             <Route path="/register/*" element={<ProtectedRoute component={Register} />} />
-//         </Routes>
-//     );
-// };
+const PrivateRoute = ({ children}) => {
+  const token = useUserStore((state) => state.token !== null);
+    if (token){
+        return children;
+    } else {
+        return <Navigate to="/" />;
+    }
+};
 
-// export default PrivateRoutes;
+export default PrivateRoute;
