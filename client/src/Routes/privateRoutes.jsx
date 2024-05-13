@@ -4,7 +4,7 @@ import useUserStore from '../store/store';
 
 const PrivateRoute = ({ children}) => {
   const token = useUserStore((state) => state.token !== null);
-    if (token){
+    if (!token){
         return children;
     } else {
         return <Navigate to="/" />;
