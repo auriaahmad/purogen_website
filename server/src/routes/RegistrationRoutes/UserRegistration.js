@@ -2,19 +2,13 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
-const  User  = require('../../models/CustomerRegistrationModel');
+const  User  = require('../../models/UserRegistrationModel');
 const validator = require('../../middleware/dataValidator');
 
 // Route to register a new user
 router.post('/', validator,  async (req, res) => {
     try {
-        const { box_name, username, first_name, last_name, phone_number, password, email } = req.body;
-
-        // Check if username already exists
-        let existingBoxName = await User.findOne({ where: { box_name } });
-        if (existingBoxName) {
-            return res.status(400).json({ error: 'Box Name Already Exist' });
-        }
+        const { customer_id, username, first_name, last_name, phone_number, password, email } = req.body;
 
         // Check if username already exists
         let existingUser = await User.findOne({ where: { username } });
@@ -35,16 +29,16 @@ router.post('/', validator,  async (req, res) => {
         }
 
         // Generate UUID for user_id
-        const customer_id = uuidv4();
+        const user_id = uuidv4();
 
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create new user in the database
         const newUser = await User.create({
+            user_id,
             customer_id,
             username,
-            box_name,
             first_name,
             last_name,
             phone_number,
@@ -52,10 +46,11 @@ router.post('/', validator,  async (req, res) => {
             email
         });
 
-        res.status(201).json({ message: 'Customer registered successfully', user: {     
+        res.status(201).json({ message: 'Admin registered successfully', user: {
+            
+                user_id: newUser.user_id,
                 customer_id: newUser.customer_id,
                 username: newUser.username,
-                box_name: newUser.box_name,
                 first_name: newUser.first_name,
                 last_name: newUser.last_name,
                 phone_number: newUser.phone_number,

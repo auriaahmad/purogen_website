@@ -29,14 +29,14 @@ router.post('/', validator,  async (req, res) => {
         }
 
         // Generate UUID for user_id
-        const user_id = uuidv4();
+        const admin_id = uuidv4();
 
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create new user in the database
         const newUser = await User.create({
-            user_id,
+            admin_id,
             username,
             first_name,
             last_name,
@@ -47,7 +47,7 @@ router.post('/', validator,  async (req, res) => {
 
         res.status(201).json({ message: 'Admin registered successfully', user: {
             
-                user_id: newUser.user_id,
+                admin_id: newUser.admin_id,
                 username: newUser.username,
                 first_name: newUser.first_name,
                 last_name: newUser.last_name,
