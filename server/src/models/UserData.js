@@ -24,6 +24,10 @@ const UserData = sequelize.define('User_Data', {
     customer_id: DataTypes.STRING,
     Machine_ID: DataTypes.STRING,
     Machine_Location: DataTypes.STRING,
+    chamber: DataTypes.STRING,
+    temporary_1: DataTypes.STRING,
+    temporary_2: DataTypes.STRING,
+    temporary_3: DataTypes.STRING,
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
@@ -35,7 +39,7 @@ const UserData = sequelize.define('User_Data', {
     }
 }, {
     tableName: 'User_Data', // Set the table name if it's different from the model name
-    timestamps: false // Disable Sequelize's default timestamps (created_at, updated_at)
+    timestamps: true // Disable Sequelize's default timestamps (created_at, updated_at)
 });
 UserData.belongsTo(User, { foreignKey: 'user_id', targetKey: 'user_id' });
 UserData.belongsTo(User, { foreignKey: 'username', targetKey: 'username' });

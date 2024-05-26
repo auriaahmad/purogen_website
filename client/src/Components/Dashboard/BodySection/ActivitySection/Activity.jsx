@@ -96,7 +96,7 @@ const Activity = ({ onClose, selectedUserData, userProfileData }) => {
         <div className="heading flex">
           <h1>
             {userProfileData.first_name.charAt(0).toUpperCase() + userProfileData.first_name.slice(1)}{" "} 
-            {userProfileData.last_name.charAt(0).toUpperCase() + userProfileData.last_name.slice(1)}'s Data
+            {userProfileData.last_name.charAt(0).toUpperCase() + userProfileData.last_name.slice(1)}'s Cycle Data
           </h1>
           <div className="searchBar">
             <label htmlFor="searchOptions">Search By:</label>
@@ -121,39 +121,41 @@ const Activity = ({ onClose, selectedUserData, userProfileData }) => {
             <thead>
               <tr>
                 <th>No.</th>
+                <th>Machine ID</th>
+                <th>Machine Location</th>
+                <th>Process</th>
                 <th>Recipe</th>
                 <th>Weight</th>
                 <th>Mass</th>
-                <th>Process</th>
                 <th>Strain</th>
-                <th>Operator</th>
                 <th>Terpene Name</th>
                 <th>Manufacturer Name</th>
                 <th>Injection Vol.</th>
                 <th>Injections</th>
                 <th>Customer Name</th>
-                <th>Machine ID</th>
-                <th>Machine Location</th>
-                <th>Created At</th>
+
+                <th>Operator</th>
+                <th>Run Date</th>
               </tr>
             </thead>
             <tbody>
               {filteredData.map((user, index) => (
                 <tr key={user.user_data_id}>
                   <td>{index + 1}</td>
+                  <td>{user.Machine_ID}</td>
+                  <td>{user.Machine_Location}</td>
+                  <td>{user.process}</td>
                   <td>{user.recipe}</td>
                   <td>{user.weight}</td>
                   <td>{user.mass}</td>
-                  <td>{user.process}</td>
                   <td>{user.strain}</td>
-                  <td>{user.operator_name}</td>
                   <td>{user.terpene_name}</td>
                   <td>{user.manufacturer_name}</td>
                   <td>{user.injection_volume}</td>
                   <td>{user.injections}</td>
                   <td>{user.customer_name}</td>
-                  <td>{user.Machine_ID}</td>
-                  <td>{user.Machine_Location}</td>
+                  
+                  <td>{user.operator_name}</td>
                   <td>{new Date(user.created_at).toISOString().split('T')[0]}</td>
                 </tr>
               ))}

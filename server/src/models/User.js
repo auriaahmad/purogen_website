@@ -14,6 +14,10 @@ const User = sequelize.define('User', {
         allowNull: false,
         unique: true
     },
+    box_name: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+    },
     first_name: {
         type: DataTypes.STRING(50),
         allowNull: false
@@ -51,7 +55,7 @@ const User = sequelize.define('User', {
     }
 }, {
     tableName: 'Users',
-    timestamps: false // Set timestamps to false if you want to handle timestamps manually
+    timestamps: true // Set timestamps to false if you want to handle timestamps manually
 });
 
 module.exports = User;

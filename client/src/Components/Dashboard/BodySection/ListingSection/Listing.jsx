@@ -98,10 +98,11 @@ const Listing = ({ users }) => {
             <thead>
               <tr>
                 <th>No.</th>
+                <th>Box Name</th>
+                <th>Name</th>
                 <th>User Name</th>
                 <th>Email</th>
                 <th>Phone Number</th>
-                <th>Name</th>
                 <th>Created At</th>
               </tr>
             </thead>
@@ -109,10 +110,11 @@ const Listing = ({ users }) => {
               {filteredUsers.map((user, index) => (
                 <tr key={user.user_id} onClick={() => handleRowClick(user)}>
                   <td>{index + 1}</td>
+                  {/* <td>{user.box_name}</td> */}
+                  <td>{user.first_name + ' ' + user.last_name}</td>
                   <td>{user.username}</td>
                   <td>{user.email}</td>
                   <td>{user.phone_number}</td>
-                  <td>{user.first_name + ' ' + user.last_name}</td>
                   <td>{new Date(user.created_at).toISOString().split('T')[0]}</td>
                 </tr>
               ))}
