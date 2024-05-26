@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 // Routes Import
 const admin_registration = require('./src/routes/RegistrationRoutes/AdminRegistrationRoute');
 const customer_registration = require('./src/routes/RegistrationRoutes/CustomerRegistrationRoute');
+const machine_registration = require('./src/routes/RegistrationRoutes/MachineRegistrationRoute');
 // const all_recipe_data = require('./src/routes/adminRoutes/AllRecipesData');
 // const all_users_profiles = require('./src/routes/adminRoutes/AllUsersProfiles');
 // const user_registration = require('./src/routes/commonRoutes/Registration');
@@ -28,6 +29,7 @@ app.use(cookieParser());
 
 app.use('/adminReg', admin_registration);
 app.use('/customerReg', customer_registration);
+app.use('/machineReg', machine_registration);
 // app.use('/alluserdata', all_recipe_data);
 // app.use('/users', all_users_profiles);
 // app.use('/registerUser', user_registration);
