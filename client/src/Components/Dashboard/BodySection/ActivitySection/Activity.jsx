@@ -133,8 +133,8 @@ const Activity = ({ onClose, selectedUserData, userProfileData }) => {
                 <th>Injection Vol.</th>
                 <th>Injections</th>
                 <th>Customer Name</th>
-
                 <th>Operator</th>
+                {/* <th>Chamber</th> */}
                 <th>Run Date</th>
               </tr>
             </thead>
@@ -154,8 +154,8 @@ const Activity = ({ onClose, selectedUserData, userProfileData }) => {
                   <td>{user.injection_volume}</td>
                   <td>{user.injections}</td>
                   <td>{user.customer_name}</td>
-                  
                   <td>{user.operator_name}</td>
+                  {/* <td>{user.chamber}</td> */}
                   <td>{new Date(user.created_at).toISOString().split('T')[0]}</td>
                 </tr>
               ))}

@@ -1,10 +1,10 @@
-// registered user data
-// models/UserData.js
+// admin registration data
+// models/AdminRegistrationData.js
 const { DataTypes } = require('sequelize');
-const {sequelize} = require('../config/database'); // Import the configured Sequelize instance
+const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
 
-const User = sequelize.define('User', {
-    user_id: {
+const AdminRegistration = sequelize.define('AdminRegistration', {
+    admin_id: {
         type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4
@@ -13,10 +13,6 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING(50),
         allowNull: false,
         unique: true
-    },
-    box_name: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
     },
     first_name: {
         type: DataTypes.STRING(50),
@@ -40,10 +36,6 @@ const User = sequelize.define('User', {
         allowNull: false,
         unique: true
     },
-    admin: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false // Default value for admin status
-    },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
@@ -54,8 +46,8 @@ const User = sequelize.define('User', {
         onUpdate: DataTypes.NOW
     }
 }, {
-    tableName: 'Users',
-    timestamps: true // Set timestamps to false if you want to handle timestamps manually
+    tableName: 'Admins_Table',
+    timestamps: false // Set timestamps to false if you want to handle timestamps manually
 });
 
-module.exports = User;
+module.exports = AdminRegistration;
