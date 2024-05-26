@@ -45,7 +45,7 @@ router.post('/', validator,  async (req, res) => {
             email
         });
 
-        res.status(201).json({ message: 'User registered successfully', user: {
+        res.status(201).json({ message: 'Admin registered successfully', user: {
             
                 user_id: newUser.user_id,
                 username: newUser.username,
