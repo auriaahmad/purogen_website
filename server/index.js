@@ -13,9 +13,9 @@ const user_registration = require('./src/routes/RegistrationRoutes/UserRegistrat
 // const all_users_profiles = require('./src/routes/adminRoutes/AllUsersProfiles');
 // const user_registration = require('./src/routes/commonRoutes/Registration');
 // const particular_user_data = require('./src/routes/adminRoutes/ParticularUserData')
-// const signin = require('./src/routes/commonRoutes/SignIn');
-// const logout = require('./src/routes/commonRoutes/LogOut');
-// const verifyToken = require('./src/middleware/tokenValidator')
+const signin = require('./src/routes/authRoutes/SignIn');
+const logout = require('./src/routes/authRoutes/LogOut');
+const verifyToken = require('./src/middleware/tokenValidator')
 
 // Database Connection
 const { testConnection } = require('./src/config/database');
@@ -25,7 +25,7 @@ testConnection();
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
-// app.use(verifyToken);
+app.use(verifyToken);
 
 
 app.use('/adminReg', admin_registration);
@@ -38,8 +38,8 @@ app.use('/userReg', user_registration);
 // app.use('/particularuserdata', particular_user_data);
 
 // module.exports = router;
-// app.use('/signin', signin);
-// app.use('/logout', logout);
+app.use('/signin', signin);
+app.use('/logout', logout);
 
 const PORT = process.env.PORT || 3006;
 app.listen(PORT, () => {

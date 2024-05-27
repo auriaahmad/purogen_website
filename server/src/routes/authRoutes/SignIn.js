@@ -3,11 +3,10 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
-const User = require('../../models/User');
-const UserSession = require('../../models/UserSessions');
+const User = require('../../models/AdminRegistrationModel');
+const UserSession = require('../../models/AdminSessionsModel');
 require('dotenv').config();
 const JWT_SECRET = process.env.JWT_SECRET;
-
 
 // Route to handle user sign-in
 router.post('/', async (req, res) => {
@@ -26,12 +25,10 @@ router.post('/', async (req, res) => {
         if (!isPasswordValid) {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
-        if (!user.admin){
-            return res.status(401).json({ error: 'Only Admin Access' });
-        }
 
+        const exp = 500;
         // Generate JWT token
-        const token = jwt.sign({ user_id: user.user_id }, JWT_SECRET, { expiresIn: '500s' });
+        const token = jwt.sign({ admin_id: user.admin_id }, JWT_SECRET, { expiresIn: `${exp}s` });
 
         // Delete password field from user object
         delete user.password;
@@ -40,15 +37,15 @@ router.post('/', async (req, res) => {
         user.token = token;
 
         // Generate session ID
-        const session_id = uuidv4();
+        const admin_session_id = uuidv4();
 
         // Calculate session expiration time
-        const expires_at = new Date(Date.now() + 500 * 1000); // 10 seconds from now
+        const expires_at = new Date(Date.now() + exp * 1000); // 10 seconds from now
 
         // Create session record in the database
         await UserSession.create({
-            session_id,
-            user_id: user.user_id,
+            admin_session_id,
+            admin_id: user.admin_id,
             expires_at
         });
 

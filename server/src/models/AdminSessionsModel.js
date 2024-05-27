@@ -2,7 +2,7 @@
 // models/AdminSessions.js
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
-const Admin = require('./AdminRegistrationData'); // Import the Admin model
+const Admin = require('./AdminRegistrationModel'); // Import the Admin model
 
 const AdminSessions = sequelize.define('AdminSessions', {
     admin_session_id: {
