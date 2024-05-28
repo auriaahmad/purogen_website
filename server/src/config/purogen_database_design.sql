@@ -168,3 +168,35 @@ CREATE TABLE IF NOT EXISTS User_Sessions (
     expires_at TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users_Table(user_id) ON DELETE CASCADE
 );
+
+-- CREATE TABLE IF NOT EXISTS customer_machine_assignment_table (
+--     machine_assignment_id VARCHAR(36) PRIMARY KEY DEFAULT (UUID()),
+--     customer_id VARCHAR(36) NOT NULL,
+--     machine_id VARCHAR(36) NOT NULL UNIQUE,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+--     FOREIGN KEY (customer_id) REFERENCES Customers_Table(customer_id) ON DELETE CASCADE,
+--     FOREIGN KEY (machine_id) REFERENCES Machines_Table(machine_register_id) ON DELETE CASCADE
+-- );
+
+-- CREATE TABLE IF NOT EXISTS customer_user_assignment_table (
+--     user_assignment_id VARCHAR(36) PRIMARY KEY DEFAULT (UUID()),
+--     customer_id VARCHAR(36) NOT NULL,
+--     user_id VARCHAR(36) NOT NULL UNIQUE,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+--     FOREIGN KEY (customer_id) REFERENCES Customers_Table(customer_id) ON DELETE CASCADE,
+--     FOREIGN KEY (user_id) REFERENCES Users_Table(user_id) ON DELETE CASCADE
+-- );
+
+CREATE TABLE IF NOT EXISTS User_Machine_Assignment_Table (
+    user_machine_assignment_id VARCHAR(36) PRIMARY KEY DEFAULT (UUID()),
+    customer_id VARCHAR(36) NOT NULL,
+    machine_register_id VARCHAR(36) NOT NULL,
+    user_id VARCHAR(36) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES Customers_Table(customer_id) ON DELETE CASCADE,
+    FOREIGN KEY (machine_id) REFERENCES Machines_Table(machine_register_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES Users_Table(user_id) ON DELETE CASCADE
+);

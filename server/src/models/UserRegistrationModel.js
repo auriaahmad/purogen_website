@@ -15,7 +15,9 @@ const UserRegistration = sequelize.define('UserRegistration', {
         allowNull: false,
         references: {
             model: Customer,
-            key: 'customer_id'
+            key: 'customer_id',
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         }
     },
     username: {
@@ -59,7 +61,17 @@ const UserRegistration = sequelize.define('UserRegistration', {
     timestamps: false // Set timestamps to false if you want to handle timestamps manually
 });
 
-// Setting up the foreign key relationships in sequelize
-UserRegistration.belongsTo(Customer, { foreignKey: 'customer_id', targetKey: 'customer_id' });
+// Setting up the foreign key relationship in sequelize
+UserRegistration.belongsTo(Customer, {
+    foreignKey: 'customer_id',
+    targetKey: 'customer_id',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
 
+Customer.hasMany(UserRegistration, {
+    foreignKey: 'customer_id',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
 module.exports = UserRegistration;

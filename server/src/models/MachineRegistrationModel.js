@@ -1,5 +1,4 @@
-// machine registration data
-// models/MachineRegistrationData.js
+// models/MachineRegistrationModel.js
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
 const Customer = require('./CustomerRegistrationModel'); // Import the Customer model
@@ -15,7 +14,9 @@ const MachineRegistration = sequelize.define('MachineRegistration', {
         allowNull: false,
         references: {
             model: Customer,
-            key: 'customer_id'
+            key: 'customer_id',
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         }
     },
     machine_id: {
@@ -37,11 +38,22 @@ const MachineRegistration = sequelize.define('MachineRegistration', {
         onUpdate: DataTypes.NOW
     }
 }, {
-    tableName: 'Machine_Registration_Table',
+    tableName: 'Machines_Table',
     timestamps: false // Set timestamps to false if you want to handle timestamps manually
 });
 
 // Setting up the foreign key relationship in sequelize
-MachineRegistration.belongsTo(Customer, { foreignKey: 'customer_id', targetKey: 'customer_id' });
+MachineRegistration.belongsTo(Customer, {
+    foreignKey: 'customer_id',
+    targetKey: 'customer_id',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+
+Customer.hasMany(MachineRegistration, {
+    foreignKey: 'customer_id',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
 
 module.exports = MachineRegistration;
