@@ -2,12 +2,12 @@
 
 const express = require('express');
 const router = express.Router();
-const User = require('../../models/User');
+const User = require('../../models/UserRegistrationModel');
 
 router.get('/', async (req, res) => {
     try {
-        const userData = await User.findAll();
-        res.json(userData);
+        const userList = await User.findAll();
+        res.json(userList);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).json({ error: 'Error fetching data' });

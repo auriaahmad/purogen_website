@@ -200,3 +200,21 @@ CREATE TABLE IF NOT EXISTS User_Machine_Assignment_Table (
     FOREIGN KEY (machine_id) REFERENCES Machines_Table(machine_register_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES Users_Table(user_id) ON DELETE CASCADE
 );
+
+-- Triggers when data come from machine to cloud 
+CREATE DEFINER=`root`@`localhost` TRIGGER `customers_machine_data_table_BEFORE_INSERT` BEFORE INSERT ON `customers_machine_data_table` FOR EACH ROW BEGIN
+    DECLARE machineCustomerID CHAR(36);
+    DECLARE newUUID CHAR(36);
+
+    -- Generate a new UUID for customers_machine_data_id
+    SET newUUID = UUID();
+
+    -- Fetch the customer_id from the machines_table
+    SELECT customer_id INTO machineCustomerID
+    FROM machines_table
+    WHERE machine_id = NEW.machine_id;
+
+    -- Set the customer_id and customers_machine_data_id in the new customers_machine_data_table record
+    SET NEW.customer_id = machineCustomerID;
+    SET NEW.customers_machine_data_id = newUUID;
+END

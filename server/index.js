@@ -18,13 +18,21 @@ const delete_customer = require('./src/routes/DeleteRoutes/DeleteCustomer');
 const delete_machine = require('./src/routes/DeleteRoutes/DeleteMachine');
 const delete_user = require('./src/routes/DeleteRoutes/DeleteUser');
 
-
-// const all_recipe_data = require('./src/routes/adminRoutes/AllRecipesData');
-// const all_users_profiles = require('./src/routes/adminRoutes/AllUsersProfiles');
+// Visulization Data Routes
+const all_customers_machine_data = require('./src/routes/VisulizationDataRoutes/AllCustomersMachinesData');
+const all_registered_customers= require('./src/routes/VisulizationDataRoutes/AllRegisteredCustomers');
+const all_registered_machines= require('./src/routes/VisulizationDataRoutes/AllRegisteredMachines');
+const all_registered_users= require('./src/routes/VisulizationDataRoutes/AllRegisteredUsers');
+const particular_customer_machine_data = require('./src/routes/VisulizationDataRoutes/ParticularCustomerMachineData')
+// const all_registered_machines= require('./src/routes/VisulizationDataRoutes/AllRegisteredCustomers');
+// const all_registered_users= require('./src/routes/VisulizationDataRoutes/AllRegisteredCustomers');
 // const user_registration = require('./src/routes/commonRoutes/Registration');
-// const particular_user_data = require('./src/routes/adminRoutes/ParticularUserData')
+
+// Auth Routes
 const signin = require('./src/routes/AuthRoutes/SignIn');
 const logout = require('./src/routes/AuthRoutes/LogOut');
+
+
 const verifyToken = require('./src/middleware/tokenValidator')
 
 // Database Connection
@@ -52,13 +60,14 @@ app.use('/deleteMachine', delete_machine);
 app.use('/deleteUser', delete_user);
 
 
+// Visulization Data Routes
+app.use('/allCustomerMachineData', all_customers_machine_data);
+app.use('/allRegisteredCustomers', all_registered_customers);
+app.use('/allRegisteredMachines', all_registered_machines);
+app.use('/allRegisteredUsers', all_registered_users);
+app.use('/particularCustomerMachineData', particular_customer_machine_data);
 
-// app.use('/alluserdata', all_recipe_data);
-// app.use('/users', all_users_profiles);
-// app.use('/registerUser', user_registration);
-// app.use('/particularuserdata', particular_user_data);
-
-// module.exports = router;
+// Auth Routes
 app.use('/signin', signin);
 app.use('/logout', logout);
 

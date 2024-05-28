@@ -2,8 +2,8 @@
 // models/CustomersMachineData.js
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
-const Customer = require('./CustomerRegistrationData'); // Import the Customer model
-const MachineRegistration = require('./MachineRegistrationData'); // Import the MachineRegistration model
+const Customer = require('../models/CustomerRegistrationModel'); // Import the Customer model
+const MachineRegistration = require('../models/MachineRegistrationModel'); // Import the MachineRegistration model
 
 const CustomersMachineData = sequelize.define('CustomersMachineData', {
     customers_machine_data_id: {
@@ -13,21 +13,16 @@ const CustomersMachineData = sequelize.define('CustomersMachineData', {
     },
     customer_id: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: Customer,
             key: 'customer_id'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'SET NULL'
     },
     machine_id: {
         type: DataTypes.STRING(50),
-        allowNull: false,
-        references: {
-            model: MachineRegistration,
-            key: 'machine_id'
-        },
-        onDelete: 'CASCADE'
+        allowNull: false
     },
     machine_location: {
         type: DataTypes.STRING(50),
@@ -104,11 +99,11 @@ const CustomersMachineData = sequelize.define('CustomersMachineData', {
     }
 }, {
     tableName: 'Customers_Machine_Data_Table',
-    timestamps: true // Set timestamps to false if you want to handle timestamps manually
+    timestamps: false // Set timestamps to false if you want to handle timestamps manually
 });
 
 // Setting up the foreign key relationships in sequelize
-CustomersMachineData.belongsTo(Customer, { foreignKey: 'customer_id', targetKey: 'customer_id', onDelete: 'CASCADE' });
-CustomersMachineData.belongsTo(MachineRegistration, { foreignKey: 'machine_id', targetKey: 'machine_id', onDelete: 'CASCADE' });
+CustomersMachineData.belongsTo(Customer, { foreignKey: 'customer_id', targetKey: 'customer_id', onDelete: 'SET NULL' });
+// CustomersMachineData.belongsTo(MachineRegistration, { foreignKey: 'machine_id', targetKey: 'machine_id', onDelete: 'SET NULL' });
 
 module.exports = CustomersMachineData;

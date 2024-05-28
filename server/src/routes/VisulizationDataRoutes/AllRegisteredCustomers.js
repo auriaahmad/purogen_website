@@ -2,14 +2,12 @@
 
 const express = require('express');
 const router = express.Router();
-const UserData = require('../../models/UserData');
-const verifyToken = require('../../middleware/tokenValidator');
-
+const Customer = require('../../models/CustomerRegistrationModel');
 
 router.get('/', async (req, res) => {
     try {
-        const userData = await UserData.findAll();
-        res.json(userData);
+        const customerList = await Customer.findAll();
+        res.json(customerList);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).json({ error: 'Error fetching data' });
