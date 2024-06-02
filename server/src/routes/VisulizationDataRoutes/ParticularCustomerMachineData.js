@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const CutomerMachineData = require('../../models/CustomerMachineDataModel');
-router.get('/:customer_id?', async (req, res) => {
+router.get('/:machine_id?', async (req, res) => {
   try {
-      const customer_id = req.params.customer_id;
+      const machine_id = req.params.machine_id;
       // Check if userId is not provided
-      if (!customer_id) {
+      if (!machine_id) {
           return res.status(400).json({ error: 'Record Not Found' });
       }
     //   console.log(userId);
       // Fetch all data from User_Data table for the given customer_id
       const customerMachineData = await CutomerMachineData.findAll({
           where: {
-              customer_id: customer_id
+              machine_id: machine_id
           }
       });
 

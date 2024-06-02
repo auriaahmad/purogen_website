@@ -2,39 +2,40 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Top from './TopSection/Top';
 import Listing from './ListingSection/Listing';
+import CustomersListing from '../../Visualize/Customers';
 import '../../../App.css'
 
 const Body = () => {
 
 
 
-  const [users, setUsers] = useState([]);
+  const [customers, setCustomers] = useState([]);
 
 
   const [userCount, setUserCount] = useState({ currentDate: 0, currentMonth: 0 });
   useEffect(() => {
     axios.get('http://localhost:3006/allRegisteredCustomers',{ withCredentials: true })
       .then(response => {
-        const users = response.data;
-        setUsers(users);
+        const customers = response.data;
+        setCustomers(customers);
         const currentDate = new Date();
         const currentDay = currentDate.getDate();
         const currentMonth = currentDate.getMonth() + 1;
 
-        const usersWithCurrentDate = users.filter(user => {
+        const customersWithCurrentDate = customers.filter(user => {
           const userDate = new Date(user.created_at);
           return userDate.getDate() === currentDay && userDate.getMonth() + 1 === currentMonth;
         });
 
-        const usersWithCurrentMonth = users.filter(user => {
+        const customersWithCurrentMonth = customers.filter(user => {
           const userDate = new Date(user.created_at);
           return userDate.getMonth() + 1 === currentMonth;
         });
 
-        const usersCountWithCurrentDate = usersWithCurrentDate.length;
-        const usersCountWithCurrentMonth = usersWithCurrentMonth.length;
+        const customersCountWithCurrentDate = customersWithCurrentDate.length;
+        const customersCountWithCurrentMonth = customersWithCurrentMonth.length;
 
-        setUserCount({ currentDate: usersCountWithCurrentDate, currentMonth: usersCountWithCurrentMonth });
+        setUserCount({ currentDate: customersCountWithCurrentDate, currentMonth: customersCountWithCurrentMonth });
       })
       .catch(error => {
         console.error('Error fetching user data:', error);
@@ -46,7 +47,7 @@ const Body = () => {
     <div className='mainContent'>
       <Top userCount={userCount}/>
       <div className="bottom flex">
-        <Listing users={users} />
+        <Listing customers={customers} />
       </div>
     </div>
   );

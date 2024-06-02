@@ -93,7 +93,7 @@
           color: var(--blackColor);
           font-weight: 600; }
       .registerPage .container .formDiv .form {
-        gap: .5srem; }
+        gap: .5rem; }
         .registerPage .container .formDiv .form .inputDiv .icon {
           color: var(--greyText); }
         .registerPage .container .formDiv .form .inputDiv input {
@@ -109,7 +109,7 @@
         .registerPage .container .formDiv .form .inputDiv label {
           color: var(--blackColor);
           font-weight: 400;
-          font-size: 12px;
+          font-size: 14px;
           padding: .5rem 0;
           display: block; }
         .registerPage .container .formDiv .form .inputDiv .input {
