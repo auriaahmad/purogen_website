@@ -84,7 +84,6 @@ video {
   background: var(--paleGreen); }
 
 .registerPage {
-  margin-left: 10%;
   height: 90vh;
   width: 100%;
   border-radius: 10px;
@@ -92,9 +91,10 @@ video {
   box-shadow: 0 7px 50px #d6dfd5;
   gap: 100px;
   overflow: auto;
-  margin: 0px 0px; }
+  margin-left: 10%; }
   .registerPage .container {
-    height: 90vh;
+    margin-left: 10%;
+    height: auto;
     width: 60%;
     margin: auto;
     justify-content: space-between;
@@ -178,30 +178,32 @@ video {
           color: var(--blackColor);
           font-weight: 600; }
       .registerPage .container .formDiv .form {
-        gap: 1rem; }
+        gap: .5srem; }
         .registerPage .container .formDiv .form .inputDiv .icon {
           color: var(--greyText); }
-        .registerPage .container .formDiv .form .inputDiv__radio input {
-          background: none;
-          outline: none;
-          border: none;
-          width: 50px; }
         .registerPage .container .formDiv .form .inputDiv input {
           background: none;
           outline: none;
           border: none;
-          width: 200px; }
+          width: 100%; }
+        .registerPage .container .formDiv .form .inputDiv select {
+          background: none;
+          outline: none;
+          border: none;
+          width: 100%; }
         .registerPage .container .formDiv .form .inputDiv label {
           color: var(--blackColor);
           font-weight: 400;
-          font-size: 14px;
+          font-size: 12px;
           padding: .5rem 0;
           display: block; }
         .registerPage .container .formDiv .form .inputDiv .input {
           gap: .5rem;
-          padding: 1rem;
+          padding: .5rem;
           background: var(--inputColor);
-          border-radius: 10px; }
+          border-radius: 10px;
+          width: 100%;
+          /* Ensure the input container has full width */ }
         .registerPage .container .formDiv .form .btn {
           padding: .8rem;
           background: var(--primaryColor);
@@ -413,7 +415,7 @@ video {
 @media screen and (max-width: 662px) {
   .loginPage .container,
   .registerPage .container {
-    height: 100%;
+    height: auto;
     width: 100%;
     flex-direction: column;
     padding: 1.5rem; }
@@ -473,8 +475,7 @@ video {
       font-size: 20px; }
   .loginPage .container .formDiv .form .inputDiv .input,
   .registerPage .container .formDiv .form .inputDiv .input {
-    width: 100%;
-    max-width: 200px; } }
+    width: 100%; } }
 
 @media screen and (max-width: 927px) {
   .loginPage .container,

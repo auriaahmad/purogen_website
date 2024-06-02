@@ -26,10 +26,9 @@ router.post('/',  async (req, res) => {
             machine_location,
         });
 
-        res.status(201).json({ message: 'Machine ID Registered Successfully', machine: {
-            machine_register_id: newMachine.machine_register_id,
-            customer_id: newMachine.customer_id,    
-            user_id: newMachine.machine_id,
+        res.status(201).json({ message: 'Machine ID Registered Successfully', machine: {   
+            machine_id: newMachine.machine_id,
+            machine_location: newMachine.machine_location
         }
     });
     } catch (error) {

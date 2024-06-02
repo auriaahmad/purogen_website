@@ -53,7 +53,6 @@ router.post('/', validator,  async (req, res) => {
         });
 
         res.status(201).json({ message: 'Customer registered successfully', user: {     
-                customer_id: newUser.customer_id,
                 username: newUser.username,
                 box_name: newUser.box_name,
                 first_name: newUser.first_name,

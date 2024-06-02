@@ -1,42 +1,35 @@
 import React, { useState } from 'react';
-// import './Register.css';
-import '../../App.css'
+import '../../../App.css'
 import { Link, useNavigate } from 'react-router-dom';
-// import axios from 'axios'
 import axios from 'axios';
-import video from '../../Assets/video.mp4'
-import logo from '../../Assets/logo.png'
+import video from '../../../Assets/video.mp4'
 import { FaUserShield } from 'react-icons/fa'
 import { BsFillShieldLockFill } from 'react-icons/bs'
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import { MdMarkEmailRead } from 'react-icons/md'
-import purogenLogo from '../../Assets/purogen.png'
-// import Activity from '../Dashboard/BodySection/ActivitySection/Activity';
-import RegisteredUserInfo from './RegisteredUserInfo';
+import purogenLogo from '../../../Assets/purogen.png'
+import RegisteredCustomerInfo from './RegisteredCustomerInfo';
 
 
-const Register = () => {
+const RegisterCustomer = () => {
     const [email, setEmail] = useState('')
     const [userName, setUserName] = useState('')
+    const [boxName, setBoxName] = useState('')
     const [password, setPassword] = useState('')
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [admin, setAdmin] = useState(false);
-    const [newRegUser, setNewRegUser] = useState({});
+    const [newRegCustomer, setNewRegCustomer] = useState({});
 
-
-    const navigateTo = useNavigate();
-
-
-
-    const createUser = async (e) => {
+    const createCustomer = async (e) => {
         console.log("here create user");
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3006/registerUser', {
+            const response = await axios.post('http://localhost:3006/customerReg', {
                 email: email,
                 username: userName,
+                box_name: boxName,
                 password: password,
                 first_name: firstname,
                 last_name: lastname,
@@ -44,12 +37,10 @@ const Register = () => {
                 admin: admin
             });
             console.log("Response:", response.data);
-            setNewRegUser(response.data.user);
-
-            // Assuming navigateTo, setEmail, setUserName, and setPassword are properly defined
-            // navigateTo('/');
+            setNewRegCustomer(response.data.user);
             setEmail('');
             setUserName('');
+            setBoxName('');
             setPassword('');
             setFirstname('');
             setLastname('');
@@ -67,31 +58,15 @@ const Register = () => {
 
                 <div className="videoDiv">
                     <video src={video} autoPlay muted loop></video>
-
                     <div className="textDiv">
-
                         <br />
                         <img src={purogenLogo} alt="Purogen Logo" />
                         <br />
-                        <h2 className="title">Create New Users Here!</h2>
-                        <p>Assign Roles As Admin or Client!</p>
-
+                        <h2 className="title">Register a Customer Here!</h2>
                     </div>
-
-                    {/* <div className="footerDiv flex">
-                        <span className="text">Have an account?</span>
-                        <Link to={'/'}>
-                            <button className="btn">Login</button>
-                        </Link>
-                    </div> */}
                 </div>
 
                 <div className="formDiv flex">
-                    {/* <div className="headerDiv">
-                        <img src={logo} alt="Logo Image" />
-                        <h3>Let Us Know You!</h3>
-                    </div> */}
-
                     <form action="" className="form grid">
 
                         <div className="inputDiv">
@@ -110,6 +85,15 @@ const Register = () => {
                                 <FaUserShield className="icon" />
                                 <input type="text" id='username' placeholder='Enter Username'
                                     onChange={(event) => setUserName(event.target.value)} />
+                            </div>
+                        </div>
+
+                        <div className="inputDiv">
+                            <label htmlFor="boxname">Box Name</label>
+                            <div className="input flex">
+                                <FaUserShield className="icon" />
+                                <input type="text" id='boxname' placeholder='Enter Box Name'
+                                    onChange={(event) => setBoxName(event.target.value)} />
                             </div>
                         </div>
 
@@ -148,46 +132,16 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <div className=" inputDiv__radio">
-                            <label>Role</label>
-                            <div className="input flex">
-                                <input
-                                    type="radio"
-                                    id="admin"
-                                    name="role"
-                                    value="admin"
-                                    checked={admin === true}
-                                    onChange={() => setAdmin(true)}
-                                />
-                                <label htmlFor="admin">Admin</label>
-                                <input
-                                    type="radio"
-                                    id="client"
-                                    name="role"
-                                    value="client"
-                                    checked={admin === false}
-                                    onChange={() => setAdmin(false)}
-                                />
-                                <label htmlFor="client">Client</label>
-                            </div>
-                        </div>
-
-
-                        <button type='submit' className='btn flex' onClick={createUser}>
+                        <button type='submit' className='btn flex' onClick={createCustomer}>
                             <span>Register</span>
                             <AiOutlineSwapRight className="icon" />
                         </button>
-
-                        {/* <span className="forgotPassword">
-                            Forgot your password? <a href="">Click Here</a>
-                        </span> */}
-
                     </form>
                 </div>
             </div>
-            <RegisteredUserInfo newUser={newRegUser}/>
+            <RegisteredCustomerInfo newCustomer={newRegCustomer}/>
         </div>
     )
 }
 
-export default Register;
+export default RegisterCustomer;

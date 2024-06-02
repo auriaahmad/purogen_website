@@ -13,7 +13,7 @@ const Body = () => {
 
   const [userCount, setUserCount] = useState({ currentDate: 0, currentMonth: 0 });
   useEffect(() => {
-    axios.get('http://localhost:3006/users',{ withCredentials: true })
+    axios.get('http://localhost:3006/allRegisteredCustomers',{ withCredentials: true })
       .then(response => {
         const users = response.data;
         setUsers(users);

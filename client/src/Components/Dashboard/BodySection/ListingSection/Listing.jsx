@@ -28,7 +28,7 @@ const customStyles = {
 const Listing = ({ users }) => {
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedOption, setSelectedOption] = useState('username');
+  const [selectedOption, setSelectedOption] = useState('box_name');
   const [selectedUserData, setSelectedUserData] = useState([]);
   const [userProfileData, setUserProfileData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,6 +75,7 @@ const Listing = ({ users }) => {
           <div className="searchBar">
             <label htmlFor="searchOptions">Search By:</label>
             <select id="searchOptions" value={selectedOption} onChange={handleSelectChange}>
+              <option value="box_name">Box Name</option>
               <option value="username">User Name</option>
               <option value="email">Email</option>
               <option value="phone_number">Phone Number</option>
@@ -110,7 +111,7 @@ const Listing = ({ users }) => {
               {filteredUsers.map((user, index) => (
                 <tr key={user.user_id} onClick={() => handleRowClick(user)}>
                   <td>{index + 1}</td>
-                  {/* <td>{user.box_name}</td> */}
+                  <td>{user.box_name}</td>
                   <td>{user.first_name + ' ' + user.last_name}</td>
                   <td>{user.username}</td>
                   <td>{user.email}</td>

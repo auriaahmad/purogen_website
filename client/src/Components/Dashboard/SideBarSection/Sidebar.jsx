@@ -8,9 +8,11 @@ import { AiOutlinePieChart } from 'react-icons/ai'
 import { BiTrendingUp, BiLogOutCircle } from 'react-icons/bi'
 import Body from '../BodySection/Body'
 import Activity from '../BodySection/ActivitySection/Activity'
-import Register from '../../Register/Register'
-import { useState } from 'react'
+import RegisterCustomer from '../../Register/Customer/RegisterCustomer'
+import RegisterMachine from '../../Register/Machine/RegisterMachine'
+import RegisterUser from '../../Register/User/RegisterUser'
 
+import { useState } from 'react'
 
 const Sidebar = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -24,7 +26,6 @@ const Sidebar = () => {
 
           <div className="logoDiv flex">
             <img src={purogenLogo} alt="Logo" />
-            {/* <h2>P.</h2> */}
           </div>
 
           <div className="menuDiv">
@@ -43,31 +44,31 @@ const Sidebar = () => {
               </li>
 
               <li className="listItem">
-                <a onClick={() => handleTabClick('register')} className="menuLink flex">
+                <a onClick={() => handleTabClick('customer')} className="menuLink flex">
                   <MdDeliveryDining className="icon" />
                   <span className="smallText">
-                    Registration
+                    Reg. Customer
                   </span>
                 </a>
               </li>
 
-              {/* <li className="listItem">
-            <a href="#" className="menuLink flex">
-              <MdOutlineExplore className="icon" />
-              <span className="smallText">
-                Registration
-              </span>
-            </a>
-          </li>
+              <li className="listItem">
+                <a onClick={() => handleTabClick('machine')} className="menuLink flex">
+                  <MdDeliveryDining className="icon" />
+                  <span className="smallText">
+                    Reg. Machine
+                  </span>
+                </a>
+              </li>
 
-          <li className="listItem">
-            <a href="#" className="menuLink flex">
-              <BsTrophy className="icon" />
-              <span className="smallText">
-                Products
-              </span>
-            </a>
-          </li> */}
+              <li className="listItem">
+                <a onClick={() => handleTabClick('user')} className="menuLink flex">
+                  <MdDeliveryDining className="icon" />
+                  <span className="smallText">
+                    Reg. User
+                  </span>
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -77,43 +78,6 @@ const Sidebar = () => {
               SETTINGS
             </h3>
             <ul className="menuLists grid">
-
-              {/* <li className="listItem">
-            <a href="#" className="menuLink flex">
-              <AiOutlinePieChart className="icon" />
-              <span className="smallText">
-                Charts
-              </span>
-            </a>
-          </li>
-
-          <li className="listItem">
-            <a href="#" className="menuLink flex">
-              <BiTrendingUp className="icon" />
-              <span className="smallText">
-                Trends
-              </span>
-            </a>
-          </li>
-
-          <li className="listItem">
-            <a href="#" className="menuLink flex">
-              <MdOutlinePermContactCalendar className="icon" />
-              <span className="smallText">
-                Contact
-              </span>
-            </a>
-          </li>
-
-          <li className="listItem">
-            <a href="#" className="menuLink flex">
-              <BsCreditCard2Front className="icon" />
-              <span className="smallText">
-                Billing
-              </span>
-            </a>
-          </li> */}
-
               <li className="listItem">
                 <a href="/" className="menuLink flex">
                   <BiLogOutCircle className="icon" />
@@ -138,9 +102,12 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
+
+
         {activeTab === 'dashboard' && <Body />}
-        {activeTab === 'register' && <Register />}
-        {/* {activeTab === 'register' && <Activity />} */}
+        {activeTab === 'customer' && <RegisterCustomer />}
+        {activeTab === 'machine' && <RegisterMachine />} 
+        {activeTab === 'user' && <RegisterUser />} 
       </div>
     </div>
   )
