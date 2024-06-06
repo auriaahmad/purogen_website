@@ -4,9 +4,9 @@ const router = express.Router();
 const Machine = require('../../models/MachineRegistrationModel'); // Assuming this is the Machine model
 
 // Route to handle machine deletion
-router.delete('/:machine_register_id', async (req, res) => {
+router.delete('/:machineRegisterId', async (req, res) => {
     try {
-        const machine_id = req.params.machine_id;
+        const machine_register_id = req.params.machineRegisterId;
 
         // Check if the machine exists
         const machine = await Machine.findByPk(machine_register_id);

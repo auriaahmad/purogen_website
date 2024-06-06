@@ -80,11 +80,11 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
 
   return (
     <>
-      <div className="listingSection">
+      <div className="lisitingSection">
         <div className="heading flex">
           <h1>
             {customerProfileData.first_name.charAt(0).toUpperCase() + customerProfileData.first_name.slice(1)}{' '}
-            {customerProfileData.last_name.charAt(0).toUpperCase() + customerProfileData.last_name.slice(1)}'s Machines
+            {customerProfileData.last_name.charAt(0).toUpperCase() + customerProfileData.last_name.slice(1)}'s Cycle Data
           </h1>
           <div className="searchBar">
             <label htmlFor="searchOptions">Search By:</label>
@@ -107,7 +107,6 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
               value={searchQuery}
               onChange={handleSearchInputChange}
             />
-            <BiSearchAlt className="icon" />
           </div>
         </div>
         <br />
@@ -157,9 +156,13 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
           </table>
         </div>
       </div>
-      <button onClick={onClose}>Close</button>
-      <button onClick={downloadPDF}>Download as PDF</button>
-      <button onClick={downloadExcel}>Download as Excel</button>
+      <div className="modal_btn_container">
+        <button id='close_btn' onClick={onClose}>Close</button>
+        <div>
+          <button id='download_pdf_btn' onClick={downloadPDF}>Download as PDF</button>
+          <button id='download_xls_btn' onClick={downloadExcel}>Download as Excel</button>
+        </div>
+      </div>
     </>
   );
 };

@@ -169,12 +169,13 @@
   }
   
 
-.table-container {
+  .table-container {
     height: 450px;
     /* Set the fixed height as per your requirement */
     overflow: auto;
     /* Enable scrolling when content overflows */
     position: relative;
+
     table {
         width: 100%;
         border-collapse: collapse;
@@ -182,6 +183,7 @@
         th,
         td {
             padding: 10px;
+            text-align: center;
             // border: 1px solid #ddd;
         }
 
@@ -198,12 +200,54 @@
         tr:nth-child(odd) {
             background-color: #fff; // White background for odd rows
         }
+
         tr:hover {
             background-color: #ccc; // Change background color on hover
             cursor: pointer; // Change cursor to hand sign on hover
-          }
+        }
+
+        td {
+            &.actions {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .action_buttons_container {
+                    display: flex;
+                    gap: 0.5rem; // Adds some gap between the buttons
+
+                    #action_btn_edit,
+                    #action_btn_delete {
+                        padding: 0.3rem 0.6rem; // Small size buttons
+                        font-size: 0.875rem; // Small font size
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        color: white;
+                        transition: background-color 0.3s ease;
+                    }
+
+                    #action_btn_edit {
+                        background-color: blue;
+
+                        &:hover {
+                            background-color: darkblue;
+                        }
+                    }
+
+                    #action_btn_delete {
+                        background-color: red;
+
+                        &:hover {
+                            background-color: darkred;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
 
 .searchBar {
     margin-left: 5px;

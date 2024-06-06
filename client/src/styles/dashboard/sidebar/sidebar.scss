@@ -9,7 +9,7 @@
     --greyText: rgb(190, 190, 190);
     --inputColor: hsl(330, 12%, 97%);
 
-    /* Font ang Typography */
+    /* Font and Typography */
     --biggestFontSize: 2.5rem;
     --h1FontSize: 1.5rem;
     --h2FontSize: 1.25rem;
@@ -34,7 +34,6 @@
         img {
             max-width: 200px;
             margin-right: .5rem;
-            // background: var(--inputColor);
             border-radius: 2px;
             padding: .2rem;
         }
@@ -58,6 +57,7 @@
                 padding: .2rem 1.5rem;
                 width: 100%;
                 position: relative;
+                cursor: pointer;
 
                 &::before {
                     position: absolute;
@@ -89,6 +89,16 @@
                 &:hover::before {
                     height: 100%;
                     transition: .3s ease;
+                }
+
+                &.active {
+                    .menuLink {
+                        color: var(--PrimaryColor);
+                    }
+
+                    &::before {
+                        height: 100%;
+                    }
                 }
             }
         }

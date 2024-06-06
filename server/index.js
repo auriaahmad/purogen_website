@@ -18,6 +18,11 @@ const delete_customer = require('./src/routes/DeleteRoutes/DeleteCustomer');
 const delete_machine = require('./src/routes/DeleteRoutes/DeleteMachine');
 const delete_user = require('./src/routes/DeleteRoutes/DeleteUser');
 
+// Edit Routes
+const edit_customer = require('./src/routes/EditRoutes/EditCustomer');
+const edit_machine = require('./src/routes/EditRoutes/EditMachine');
+const edit_user = require('./src/routes/EditRoutes/EditUser');
+
 // Visulization Data Routes
 const all_customers_machine_data = require('./src/routes/VisulizationDataRoutes/AllCustomersMachinesData');
 const all_registered_customers= require('./src/routes/VisulizationDataRoutes/AllRegisteredCustomers');
@@ -60,6 +65,11 @@ app.use('/deleteCustomer', delete_customer);
 app.use('/deleteMachine', delete_machine);
 app.use('/deleteUser', delete_user);
 
+// Edit Routes
+app.use('/editCustomer', edit_customer);
+app.use('/editMachine', edit_machine);
+app.use('/editUser', edit_user);
+
 
 // Visulization Data Routes
 app.use('/allCustomerMachineData', all_customers_machine_data);
@@ -68,6 +78,8 @@ app.use('/allRegisteredMachines', all_registered_machines);
 app.use('/allRegisteredUsers', all_registered_users);
 app.use('/particularCustomerMachineData', particular_customer_machine_data);
 app.use('/particularCustomerMachine', particular_customer_machines);
+
+ 
 
 // Auth Routes
 app.use('/signin', signin);

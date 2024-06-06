@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Top from './TopSection/Top';
 import Listing from './ListingSection/Listing';
-import CustomersListing from '../../Visualize/Customers';
+import CustomersListing from '../../Actions/Customers';
 import '../../../App.css'
 
 const Body = () => {

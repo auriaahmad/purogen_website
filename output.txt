@@ -1,0 +1,189 @@
+D:\MyGitHub\purogen_website
+├── assets
+|  ├── architecture.png
+|  ├── preview_dashboard.png
+|  └── preview_login.png
+├── client
+|  ├── index.html
+|  ├── package-lock.json
+|  ├── package.json
+|  ├── src
+|  |  ├── App.css
+|  |  ├── App.css.map
+|  |  ├── App.jsx
+|  |  ├── App.scss
+|  |  ├── Assets
+|  |  |  ├── aldi.jpg
+|  |  |  ├── bannerImg.jpeg
+|  |  |  ├── dadang.jpg
+|  |  |  ├── gilbert.jpg
+|  |  |  ├── images (1).png
+|  |  |  ├── images (10).png
+|  |  |  ├── images (2).png
+|  |  |  ├── images (3).png
+|  |  |  ├── images (4).png
+|  |  |  ├── images (5).png
+|  |  |  ├── images (6).png
+|  |  |  ├── images (7).png
+|  |  |  ├── images (8).png
+|  |  |  ├── images (9).png
+|  |  |  ├── logo.png
+|  |  |  ├── purogen.png
+|  |  |  ├── purogen_horizontal.png
+|  |  |  └── video.mp4
+|  |  ├── Components
+|  |  |  ├── Actions
+|  |  |  |  ├── Customers.jsx
+|  |  |  |  ├── Machines.jsx
+|  |  |  |  └── Users.jsx
+|  |  |  ├── AssignmentMU
+|  |  |  |  ├── RegisteredMachineInfo.jsx
+|  |  |  |  └── RegisterMachine.jsx
+|  |  |  ├── Dashboard
+|  |  |  |  ├── BodySection
+|  |  |  |  |  ├── ActivitySection
+|  |  |  |  |  |  ├── activity.scss
+|  |  |  |  |  |  ├── MachineDataActivity.jsx
+|  |  |  |  |  |  └── MachineListingActivity.jsx
+|  |  |  |  |  ├── Body.jsx
+|  |  |  |  |  ├── ListingSection
+|  |  |  |  |  |  └── Listing.jsx
+|  |  |  |  |  └── TopSection
+|  |  |  |  |     └── Top.jsx
+|  |  |  |  ├── Dashboard.jsx
+|  |  |  |  └── SideBarSection
+|  |  |  |     ├── sidebar.css
+|  |  |  |     ├── sidebar.css.map
+|  |  |  |     ├── Sidebar.jsx
+|  |  |  |     └── sidebar.scss
+|  |  |  ├── LittleBlocks
+|  |  |  |  └── DropDownRegisters.jsx
+|  |  |  ├── Login
+|  |  |  |  ├── Login.css
+|  |  |  |  ├── Login.css.map
+|  |  |  |  ├── Login.jsx
+|  |  |  |  └── Login.scss
+|  |  |  ├── NotFound
+|  |  |  |  └── NotFound.jsx
+|  |  |  └── Register
+|  |  |     ├── Customer
+|  |  |     |  ├── RegisterCustomer.jsx
+|  |  |     |  └── RegisteredCustomerInfo.jsx
+|  |  |     ├── Machine
+|  |  |     |  ├── RegisteredMachineInfo.jsx
+|  |  |     |  └── RegisterMachine.jsx
+|  |  |     └── User
+|  |  |        ├── RegisteredUserInfo.jsx
+|  |  |        └── RegisterUser.jsx
+|  |  ├── dustBin
+|  |  |  └── AssignmentMachinesUsers.jsx
+|  |  ├── hooks
+|  |  |  ├── AuthContext.jsx
+|  |  |  └── authenticationReducer.jsx
+|  |  ├── main.jsx
+|  |  ├── Routes
+|  |  |  ├── index.jsx
+|  |  |  ├── privateRoutes.jsx
+|  |  |  └── routes.jsx
+|  |  ├── store
+|  |  |  ├── actions
+|  |  |  |  └── authActions.jsx
+|  |  |  ├── index.jsx
+|  |  |  ├── reducers
+|  |  |  |  └── authenticationReducer.jsx
+|  |  |  └── store.jsx
+|  |  ├── styles
+|  |  |  ├── base
+|  |  |  |  ├── root.scss
+|  |  |  |  ├── typography.scss
+|  |  |  |  └── utilites.scss
+|  |  |  ├── dashboard
+|  |  |  |  ├── bodySection
+|  |  |  |  |  ├── activity
+|  |  |  |  |  |  └── activity.scss
+|  |  |  |  |  ├── body.scss
+|  |  |  |  |  ├── listings
+|  |  |  |  |  |  └── listing.scss
+|  |  |  |  |  └── top
+|  |  |  |  |     └── top.scss
+|  |  |  |  ├── dashboard.scss
+|  |  |  |  └── sidebar
+|  |  |  |     └── sidebar.scss
+|  |  |  ├── LittleBlocks
+|  |  |  |  ├── download_buttons.scss
+|  |  |  |  └── edit_delete_buttons.scss
+|  |  |  ├── mediaQueries
+|  |  |  |  └── mediaQueries.scss
+|  |  |  ├── Modals
+|  |  |  |  └── actionModals.scss
+|  |  |  ├── register
+|  |  |  |  └── register.scss
+|  |  |  └── signin
+|  |  |     └── signin.scss
+|  |  └── utils
+|  |     └── PrivateRoute.jsx
+|  └── vite.config.js
+├── package-lock.json
+├── readme.md
+├── rquirements
+|  ├── check list.odt
+|  ├── locked requirements.pdf
+|  ├── progress.docx
+|  ├── PurogenAdminDashboardV0.0.1.pdf
+|  ├── Requirements Locked V0.0.1.pdf
+|  ├── Requirements Locked V0.0.2.pdf
+|  └── todo 0.0.2.txt
+└── server
+   ├── index.js
+   ├── package-lock.json
+   ├── package.json
+   └── src
+      ├── config
+      |  ├── database.js
+      |  └── purogen_database_design.sql
+      ├── middleware
+      |  ├── dataValidator.js
+      |  └── tokenValidator.js
+      ├── models
+      |  ├── AdminRegistrationModel.js
+      |  ├── AdminSessionsModel.js
+      |  ├── CustomerMachineDataModel.js
+      |  ├── CustomerRegistrationModel.js
+      |  ├── ignoreCustomerMachineAssignmentModel.js
+      |  ├── ignoreCustomerUserAssignmentModel.js
+      |  ├── MachineRegistrationModel.js
+      |  ├── UserMachineAssignmentModel.js
+      |  └── UserRegistrationModel.js
+      └── routes
+         ├── AssignmentRoutes
+         |  ├── ignoreCustomerMachineAssinment.js
+         |  ├── ignoreCustomerUserAssinment.js
+         |  └── UserMachineAssignment.js
+         ├── AuthRoutes
+         |  ├── LogOut.js
+         |  └── SignIn.js
+         ├── DeleteRoutes
+         |  ├── DeleteCustomer.js
+         |  ├── DeleteMachine.js
+         |  └── DeleteUser.js
+         ├── EditRoutes
+         |  ├── EditCustomer.js
+         |  ├── EditMachine.js
+         |  └── EditUser.js
+         ├── RegistrationRoutes
+         |  ├── AdminRegistrationRoute.js
+         |  ├── CustomerRegistrationRoute.js
+         |  ├── MachineRegistrationRoute.js
+         |  └── UserRegistration.js
+         ├── UpdateRoutes
+         └── VisulizationDataRoutes
+            ├── AllCustomersMachinesData.js
+            ├── AllRegisteredCustomers.js
+            ├── AllRegisteredMachines.js
+            ├── AllRegisteredUsers.js
+            ├── ParticularCustomerMachineData.js
+            └── ParticularCustomerMachines.js
+
+directory: 2106 file: 16818
+
+ignored: directory (51)

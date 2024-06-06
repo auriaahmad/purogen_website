@@ -88,7 +88,6 @@ const Listing = ({ customers }) => {
               value={searchQuery}
               onChange={handleSearchInputChange}
             />
-            <BiSearchAlt className='icon' />
           </div>
         </div>
         {/* <div className=""> */}
@@ -120,7 +119,6 @@ const Listing = ({ customers }) => {
             </tbody>
           </table>
         </div>
-        {/* </div> */}
       </div >
       <Modal
         isOpen={isModalOpen}

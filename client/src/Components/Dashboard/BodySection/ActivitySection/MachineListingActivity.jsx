@@ -82,7 +82,7 @@ const MachineList = ({ onClose, selectedCustomerMachines, customerProfileData })
               value={searchQuery}
               onChange={handleSearchInputChange}
             />
-            <BiSearchAlt className="icon" />
+
           </div>
         </div>
         <br />
@@ -121,7 +121,9 @@ const MachineList = ({ onClose, selectedCustomerMachines, customerProfileData })
           <ParticularCustomerMachineData onClose={handleCloseMachineModal} selectedMachineData={selectedMachineData} customerProfileData = {customerProfileData} />
         )}
       </Modal>
-      <button onClick={onClose}>Close</button>
+      <div className="modal_btn_container">
+        <button id='close_btn' onClick={onClose}>Close</button>
+      </div>
     </>
   );
 };

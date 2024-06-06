@@ -1,0 +1,50 @@
+.modal_btn_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  
+    #close_btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    //   margin-left: auto;
+    }
+  
+    #download_pdf_btn,
+    #download_xls_btn {
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+  
+    #download_pdf_btn {
+      background-color: blue;
+      color: white;
+    }
+  
+    #download_xls_btn {
+      background-color: green;
+      color: white;
+    }
+  }
+  
+  // Additional global styles to ensure buttons look consistent
+  button {
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      opacity: 0.9;
+    }
+  
+    &:focus {
+      outline: none;
+    }
+  }
+  
