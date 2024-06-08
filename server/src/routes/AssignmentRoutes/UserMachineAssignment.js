@@ -8,11 +8,14 @@ const User = require('../../models/UserRegistrationModel');
 
 // Route to assign machines to a user
 router.post('/', async (req, res) => {
+    assignments = req.body
+    console.log(assignments[0]);
     try {
         const assignments = req.body; // Expecting an array of assignments
 
         // Validate each assignment
         for (const assignment of assignments) {
+
             const { customer_id, machine_register_id, user_id } = assignment;
 
             // Check if customer exists
@@ -32,20 +35,23 @@ router.post('/', async (req, res) => {
             if (!existingUser) {
                 return res.status(404).json({ error: `User with ID ${user_id} does not exist` });
             }
-        }
 
-        // Perform batch insert
-        const assignmentPromises = assignments.map(({ customer_id, machine_register_id, user_id }) => {
+            // Check if the machine is already assigned to the user
+            let existingAssignment = await MachineAssignment.findOne({ where: { machine_register_id, user_id } });
+            if (existingAssignment) {
+                console.log(`Machine with ID ${machine_register_id} is already assigned to User with ID ${user_id}. Skipping assignment.`);
+                continue;
+            }
+
+            // Perform the assignment
             const user_machine_assignment_id = uuidv4();
-            return MachineAssignment.create({
+            await MachineAssignment.create({
                 user_machine_assignment_id,
                 customer_id,
                 machine_register_id,
                 user_id
             });
-        });
-
-        await Promise.all(assignmentPromises);
+        }
 
         res.status(201).json({ message: 'Machines assigned successfully' });
     } catch (error) {

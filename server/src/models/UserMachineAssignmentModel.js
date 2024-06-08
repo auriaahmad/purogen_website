@@ -56,8 +56,8 @@ const UserMachineAssignment = sequelize.define('UserMachineAssignment', {
 Customer.hasMany(UserMachineAssignment, { foreignKey: 'customer_id', onDelete: 'CASCADE' });
 UserMachineAssignment.belongsTo(Customer, { foreignKey: 'customer_id', onDelete: 'CASCADE' });
 
-Machine.hasMany(UserMachineAssignment, { foreignKey: 'machine_id', onDelete: 'CASCADE' });
-UserMachineAssignment.belongsTo(Machine, { foreignKey: 'machine_id', onDelete: 'CASCADE' });
+Machine.hasMany(UserMachineAssignment, { foreignKey: 'machine_register_id', onDelete: 'CASCADE' });
+UserMachineAssignment.belongsTo(Machine, { foreignKey: 'machine_register_id', onDelete: 'CASCADE' });
 
 User.hasMany(UserMachineAssignment, { foreignKey: 'user_id', onDelete: 'CASCADE' });
 UserMachineAssignment.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
