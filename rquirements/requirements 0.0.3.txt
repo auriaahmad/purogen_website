@@ -1,0 +1,3 @@
+remove numbers from listing => add a client ID
+machine data add time hours min seconds
+

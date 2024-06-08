@@ -24,7 +24,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
 
   const downloadPDF = () => {
     const doc = new jsPDF();
-    const tableColumn = ["No.", "Machine ID", "Machine Location", "Process", "Recipe", "Weight", "Mass", "Strain", "Terpene Name", "Manufacturer Name", "Injection Vol.", "Injections", "Customer Name", "Operator", "Run Date"];
+    const tableColumn = ["No.", "Machine ID", "Machine Location", "Process", "Recipe", "Weight", "Mass", "Strain", "Terpene Name", "Manufacturer Name", "Injection Vol.", "Injections", "Customer Name", "Operator","Chamber", "Run Date"];
     const tableRows = [];
 
     filteredMachineData.forEach((machine, index) => {
@@ -43,6 +43,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
         machine.injections,
         machine.customer_name,
         machine.operator,
+        machine.chamber,
         new Date(machine.created_at).toISOString().split('T')[0],
       ];
       tableRows.push(machineData);
@@ -69,6 +70,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
       "Injections": machine.injections,
       "Customer Name": machine.customer_name,
       "Operator": machine.operator,
+      "Chamber": machine.chamber,
       "Run Date": new Date(machine.created_at).toISOString().split('T')[0]
     })));
 
@@ -99,6 +101,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
               <option value="injection_volume">Injection Volume</option>
               <option value="injections">Injections</option>
               <option value="operator">Operator</option>
+              <option value="operator">Chamber</option>
               <option value="created_at">Run Date</option>
             </select>
             <input
@@ -129,6 +132,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
                 <th>Injections</th>
                 <th>Customer Name</th>
                 <th>Operator</th>
+                <th>Chamber</th>
                 <th>Run Date</th>
               </tr>
             </thead>
@@ -149,6 +153,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
                   <td>{machine.injections}</td>
                   <td>{machine.customer_name}</td>
                   <td>{machine.operator}</td>
+                  <td>{machine.chamber}</td>
                   <td>{new Date(machine.created_at).toISOString().split('T')[0]}</td>
                 </tr>
               ))}

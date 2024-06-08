@@ -14,7 +14,9 @@ import CustomersListing from '../../Actions/Customers';
 import MachinesListing from '../../Actions/Machines';
 import UsersListing from '../../Actions/Users';
 // import AssignmentMachineUser from '../../../dustBin/AssignmentMachinesUsers';  // Import the new component
-import Test from '../../AssignmentMU/RegisterMachine';
+// import Test from '../../AssignmentMU/RegisterMachine';
+// import AssignmentMachineUser from '../../AssignmentMU/RegisterMachine';
+import AssignmentMachineUser from '../../AssignmentMU/UserMachineAssignment';
 const Sidebar = () => {
   const [activeTab, setActiveTab] = useState(localStorage.getItem('activeTab') || 'dashboard');
   const [isRegistrationsOpen, setIsRegistrationsOpen] = useState(false);
@@ -157,7 +159,7 @@ const Sidebar = () => {
         {activeTab === 'VisualiazeCustomersListing' && <CustomersListing />}
         {activeTab === 'visualizeMachinesListing' && <MachinesListing />}
         {activeTab === 'visualizeUsersListing' && <UsersListing />}
-        {activeTab === 'assignment_machines_users' && <Test />}  
+        {activeTab === 'assignment_machines_users' && <AssignmentMachineUser />}  
       </div>
     </div>
   );
