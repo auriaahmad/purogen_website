@@ -8,8 +8,7 @@ const User = require('../../models/UserRegistrationModel');
 
 // Route to assign machines to a user
 router.post('/', async (req, res) => {
-    assignments = req.body
-    console.log(assignments[0]);
+
     try {
         const assignments = req.body; // Expecting an array of assignments
 

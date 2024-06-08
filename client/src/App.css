@@ -234,6 +234,21 @@ video {
             text-decoration: underline;
             cursor: pointer;
             opacity: 1; }
+        .registerPage .container .formDiv .form .machine-list {
+          max-height: 200px;
+          /* Adjust the height as needed */
+          overflow-y: scroll;
+          border: 1px solid #ccc;
+          padding: 10px; }
+        .registerPage .container .formDiv .form .machine-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px; }
+        .registerPage .container .formDiv .form .machine-item label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          /* Adjust the gap between the checkbox and the machine name as needed */ }
 
 .loginPage {
   height: 100%;
