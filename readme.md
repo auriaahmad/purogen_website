@@ -335,6 +335,9 @@ purogen_website
 ### Delete Action
 ![Delete](./assets/previewDeveloped/DeleteModal.png)
 
+### User Machine Assignment
+![AssignmentMachines](./assets/previewDeveloped/UserMachineAssignment.png)
+
 </details>
 
 # 5. Preview Developed Back-End
