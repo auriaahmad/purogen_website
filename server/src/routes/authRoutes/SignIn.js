@@ -47,13 +47,13 @@ router.post('/', async (req, res) => {
         user.updated_at = undefined;
         user.phone_number = undefined;
         user.email = undefined;
-        
-        user[admin_session_id] = admin_session_id;
+        console.log(typeof(user));
+        user['admin_session_id'] = admin_session_id;
         console.log(user);
 
 
         // console.log(user);
-        res.status(200).json({ message: 'Sign-in successful', user, token });
+        res.status(200).json({ message: 'Sign-in successful', user:{...user.dataValues,admin_session_id}, token});
 
     } catch (error) {
         console.error('Error signing in:', error);
