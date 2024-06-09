@@ -4,18 +4,28 @@
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 7px 50px rgb(214, 223, 213);
-  gap: 100px;
+  // gap: 100px;
+  margin-right: 5%;
   overflow: auto;
-  margin-left: 10%;
+  margin-left: 5%;
+  .containerR {
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    // border: 3px solid red;
+    display: flex;
+  }
 
   .container {
+    // border: 1px solid black;
     margin-left: 10%;
     height: auto;
-    width: 60%;
+    width: 50%;
     margin: auto;
     justify-content: space-between;
     border-radius: 10px;
     background: hsl(0, 0%, 91%);
+    // padding-right: 100px;
 
     .videoDiv {
       position: relative;
@@ -48,7 +58,7 @@
 
       .textDiv {
         position: relative;
-
+        // border: 1px solid green;
         .title {
           color: var(--whiteColor);
           font-size: 35px;
