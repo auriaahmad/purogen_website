@@ -3,8 +3,6 @@
 const express = require('express');
 const router = express.Router();
 const UserData = require('../../models/CustomerMachineDataModel');
-const verifyToken = require('../../middleware/tokenValidator');
-
 
 router.get('/', async (req, res) => {
     try {

@@ -3,11 +3,12 @@ import '../../../App.css';
 import { FaUserShield } from 'react-icons/fa';
 import { BsFillShieldLockFill } from 'react-icons/bs';
 import { AiOutlineSwapRight } from 'react-icons/ai';
-import { MdMarkEmailRead } from 'react-icons/md';
 import axios from 'axios';
 import video from '../../../Assets/video.mp4';
 import purogenLogo from '../../../Assets/purogen.png';
 import RegisteredMachineInfo from './RegisteredMachineInfo';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterMachine = () => {
   const [customers, setCustomers] = useState([]);
@@ -19,7 +20,6 @@ const RegisterMachine = () => {
   const [newRegMachine, setNewRegMachine] = useState({});
 
   useEffect(() => {
-    // Fetch the list of customers
     axios.get('http://localhost:3006/allRegisteredCustomers')
       .then(response => {
         setCustomers(response.data);
@@ -55,7 +55,7 @@ const RegisterMachine = () => {
     const selectedCustomerData = customers.find(customer => customer[searchOption] === selectedCustomer);
 
     if (!selectedCustomerData) {
-      alert('Please select a valid customer.');
+      toast.error('Please select a valid customer.');
       return;
     }
 
@@ -67,7 +67,7 @@ const RegisterMachine = () => {
 
     axios.post('http://localhost:3006/machineReg', registrationData)
       .then(response => {
-        alert('Machine registered successfully');
+        toast.success('Machine registered successfully');
         console.log(response.data);
         setNewRegMachine(response.data.machine);
         setSelectedCustomer('');
@@ -77,7 +77,11 @@ const RegisterMachine = () => {
       })
       .catch(error => {
         console.error('Error registering machine:', error);
-        alert('Error registering machine.');
+        if (error.response && error.response.data && error.response.data.error) {
+          toast.error(error.response.data.error);
+        } else {
+          toast.error('Error registering machine.');
+        }
       });
   };
 
@@ -85,6 +89,7 @@ const RegisterMachine = () => {
 
   return (
     <div className="registerPage flex">
+      <ToastContainer />
       <div className="container flex">
         <div className="videoDiv">
           <video src={video} autoPlay muted loop></video>

@@ -1,7 +1,5 @@
-// admin registration data
-// models/AdminRegistrationData.js
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
+const { sequelize } = require('../config/database'); 
 
 const AdminRegistration = sequelize.define('AdminRegistration', {
     admin_id: {
@@ -47,7 +45,7 @@ const AdminRegistration = sequelize.define('AdminRegistration', {
     }
 }, {
     tableName: 'Admins_Table',
-    timestamps: false // Set timestamps to false if you want to handle timestamps manually
+    timestamps: false 
 });
 
 module.exports = AdminRegistration;

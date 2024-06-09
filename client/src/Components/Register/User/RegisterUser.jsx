@@ -7,6 +7,8 @@ import axios from 'axios';
 import video from '../../../Assets/video.mp4';
 import purogenLogo from '../../../Assets/purogen.png';
 import RegisteredUserInfo from '../User/RegisteredUserInfo';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterUser = () => {
   const [customers, setCustomers] = useState([]);
@@ -24,7 +26,6 @@ const RegisterUser = () => {
   const [newUser, setNewUser] = useState({});
 
   useEffect(() => {
-    // Fetch the list of customers
     axios.get('http://localhost:3006/allRegisteredCustomers')
       .then(response => {
         setCustomers(response.data);
@@ -60,7 +61,7 @@ const RegisterUser = () => {
     const selectedCustomerData = customers.find(customer => customer[searchOption] === selectedCustomer);
 
     if (!selectedCustomerData) {
-      alert('Please select a valid customer.');
+      toast.error('Please select a valid customer.');
       return;
     }
 
@@ -71,7 +72,7 @@ const RegisterUser = () => {
 
     axios.post('http://localhost:3006/userReg', registrationData)
       .then(response => {
-        alert('User registered successfully');
+        toast.success('User registered successfully');
         setNewUser(response.data.user);
         setSelectedCustomer('');
         setUserDetails({
@@ -86,7 +87,11 @@ const RegisterUser = () => {
       })
       .catch(error => {
         console.error('Error registering user:', error);
-        alert('Error registering user.');
+        if (error.response && error.response.data && error.response.data.error) {
+          toast.error(error.response.data.error);
+        } else {
+          toast.error('Error registering user.');
+        }
       });
   };
 
@@ -94,6 +99,7 @@ const RegisterUser = () => {
 
   return (
     <div className="registerPage flex">
+      <ToastContainer />
       <div className="container flex">
         <div className="videoDiv">
           <video src={video} autoPlay muted loop></video>

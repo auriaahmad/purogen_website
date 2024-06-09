@@ -8,8 +8,6 @@ router.get('/:customer_id?', async (req, res) => {
       if (!customer_id) {
           return res.status(400).json({ error: 'Record Not Found' });
       }
-    //   console.log(userId);
-      // Fetch all data from User_Data table for the given customer_id
       const customerMachines = await CutomerMachines.findAll({
           where: {
               customer_id: customer_id

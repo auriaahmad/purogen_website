@@ -6,57 +6,52 @@ const Customer = require('../../models/CustomerRegistrationModel');
 const Machine = require('../../models/MachineRegistrationModel');
 const User = require('../../models/UserRegistrationModel');
 
-// Route to assign machines to a user
+
 router.post('/', async (req, res) => {
+  try {
+    const assignments = req.body; // Expecting an array of assignments
 
-    try {
-        const assignments = req.body; // Expecting an array of assignments
+    for (const assignment of assignments) {
+      const { customer_id, machine_register_id, user_id, action } = assignment;
 
-        // Validate each assignment
-        for (const assignment of assignments) {
+      let existingCustomer = await Customer.findOne({ where: { customer_id } });
+      if (!existingCustomer) {
+        return res.status(404).json({ error: `Customer with ID ${customer_id} does not exist` });
+      }
 
-            const { customer_id, machine_register_id, user_id } = assignment;
+      let existingMachine = await Machine.findOne({ where: { machine_register_id } });
+      if (!existingMachine) {
+        return res.status(404).json({ error: `Machine with ID ${machine_register_id} does not exist` });
+      }
 
-            // Check if customer exists
-            let existingCustomer = await Customer.findOne({ where: { customer_id } });
-            if (!existingCustomer) {
-                return res.status(404).json({ error: `Customer with ID ${customer_id} does not exist` });
-            }
+      let existingUser = await User.findOne({ where: { user_id } });
+      if (!existingUser) {
+        return res.status(404).json({ error: `User with ID ${user_id} does not exist` });
+      }
 
-            // Check if machine exists
-            let existingMachine = await Machine.findOne({ where: { machine_register_id } });
-            if (!existingMachine) {
-                return res.status(404).json({ error: `Machine with ID ${machine_register_id} does not exist` });
-            }
-
-            // Check if user exists
-            let existingUser = await User.findOne({ where: { user_id } });
-            if (!existingUser) {
-                return res.status(404).json({ error: `User with ID ${user_id} does not exist` });
-            }
-
-            // Check if the machine is already assigned to the user
-            let existingAssignment = await MachineAssignment.findOne({ where: { machine_register_id, user_id } });
-            if (existingAssignment) {
-                console.log(`Machine with ID ${machine_register_id} is already assigned to User with ID ${user_id}. Skipping assignment.`);
-                continue;
-            }
-
-            // Perform the assignment
-            const user_machine_assignment_id = uuidv4();
-            await MachineAssignment.create({
-                user_machine_assignment_id,
-                customer_id,
-                machine_register_id,
-                user_id
-            });
+      if (action === 'assign') {
+        let existingAssignment = await MachineAssignment.findOne({ where: { machine_register_id, user_id } });
+        if (existingAssignment) {
+          continue;
         }
 
-        res.status(201).json({ message: 'Machines assigned successfully' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Error during machine assignment' });
+        const user_machine_assignment_id = uuidv4();
+        await MachineAssignment.create({
+          user_machine_assignment_id,
+          customer_id,
+          machine_register_id,
+          user_id
+        });
+      } else if (action === 'unassign') {
+        await MachineAssignment.destroy({ where: { machine_register_id, user_id } });
+      }
     }
+
+    res.status(201).json({ message: 'Machines assigned/unassigned successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error during machine assignment/unassignment' });
+  }
 });
 
 module.exports = router;

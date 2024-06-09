@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 const CustomersListing = () => {
     const [customers, setCustomers] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const [selectedOption, setSelectedOption] = useState('username');
+    const [selectedOption, setSelectedOption] = useState('box_name');
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [selectedCustomer, setSelectedCustomer] = useState(null);
@@ -200,10 +200,10 @@ const CustomersListing = () => {
                             Last Name:
                             <input type="text" name="last_name" value={customerData.last_name} onChange={handleEditInputChange} />
                         </label>
-                        <label>
+                        {/* <label>
                             Box Name:
                             <input type="text" name="box_name" value={customerData.box_name} onChange={handleEditInputChange} />
-                        </label>
+                        </label> */}
                         <label>
                             Phone Number:
                             <input type="text" name="phone_number" value={customerData.phone_number} onChange={handleEditInputChange} />

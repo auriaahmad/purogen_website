@@ -1,7 +1,6 @@
 import '../../../../App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BiSearchAlt } from 'react-icons/bi'
 import MachineList from '../ActivitySection/MachineListingActivity';
 import Modal from 'react-modal';
 
@@ -17,7 +16,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    maxWidth: '80%',
+    maxWidth: '50%',
     width: '90%',
     padding: '20px',
     borderRadius: '8px',
@@ -28,7 +27,7 @@ const customStyles = {
 const Listing = ({ customers }) => {
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedOption, setSelectedOption] = useState('username');
+  const [selectedOption, setSelectedOption] = useState('box_name');
   const [selectedCustomerMachines, setSelectedCustomerMachines] = useState([]);
   const [customerProfileData, setcustomerProfileData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,7 +46,7 @@ const Listing = ({ customers }) => {
   const filteredcustomers = customers.filter(customer => {
     const fieldValue = customer[selectedOption].toString().toLowerCase();
     return fieldValue.includes(searchQuery.toLowerCase());
-  });
+  }).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
   const handleRowClick = (customer) => {
     setcustomerProfileData(customer);
@@ -57,7 +56,6 @@ const Listing = ({ customers }) => {
     axios.get(`http://localhost:3006/particularCustomerMachine/${customerId}`, { withCredentials: true })
       .then(response => {
         setIsModalOpen(true);
-        console.log(response.data);
         setSelectedCustomerMachines(response.data); // Assuming your API response returns customer data
       })
       .catch(error => {
@@ -90,7 +88,7 @@ const Listing = ({ customers }) => {
             />
           </div>
         </div>
-        {/* <div className=""> */}
+
         <div className="table-container">
           <table>
             <thead>

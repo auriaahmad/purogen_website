@@ -13,9 +13,6 @@ import RegisterUser from '../../Register/User/RegisterUser';
 import CustomersListing from '../../Actions/Customers';
 import MachinesListing from '../../Actions/Machines';
 import UsersListing from '../../Actions/Users';
-// import AssignmentMachineUser from '../../../dustBin/AssignmentMachinesUsers';  // Import the new component
-// import Test from '../../AssignmentMU/RegisterMachine';
-// import AssignmentMachineUser from '../../AssignmentMU/RegisterMachine';
 import AssignmentMachineUser from '../../AssignmentMU/UserMachineAssignment';
 const Sidebar = () => {
   const [activeTab, setActiveTab] = useState(localStorage.getItem('activeTab') || 'dashboard');
@@ -58,8 +55,8 @@ const Sidebar = () => {
 
               <li className="listItem">
                 <a onClick={handleRegistrationsClick} className="menuLink flex">
-                  {isRegistrationsOpen ? <CiSquareMinus className="icon" /> : <CiSquarePlus className="icon" />}
-                  <span className="smallText">Registrations</span>
+                  {isRegistrationsOpen ? <CiSquareMinus className="icon" style={{ color: 'green' }}/> : <CiSquarePlus className="icon" style={{ color: 'green' }}/>}
+                  <span className="smallText" style={{color: 'green'}} >Registrations</span>
                 </a>
               </li>
 
@@ -87,18 +84,18 @@ const Sidebar = () => {
                   </li>
                 </ul>
               )}
-
+              
               <li className={`listItem ${activeTab === 'assignment_machines_users' ? 'active' : ''}`}>
                 <a onClick={() => handleTabClick('assignment_machines_users')} className="menuLink flex">
                   <IoMdSpeedometer className="icon" />
-                  <span className="smallText">Assignment M/U</span>
+                  <span className="smallText">Assign/UnAssing Machines</span>
                 </a>
               </li>
 
               <li className="listItem">
                 <a onClick={handleVisualizeClick} className="menuLink flex">
-                  {isActionOpen ? <CiSquareMinus className="icon" /> : <CiSquarePlus className="icon" />}
-                  <span className="smallText">Actions Edit/Delete</span>
+                  {isActionOpen ? <CiSquareMinus className="icon" style={{ color: 'green' }}/> : <CiSquarePlus className="icon" style={{ color: 'green' }}/>}
+                  <span className="smallText" style={{ color: 'green' }}>Actions Edit/Delete</span>
                 </a>
               </li>
 

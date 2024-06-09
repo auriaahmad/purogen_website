@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../../../../App.css';
-import { BiSearchAlt } from 'react-icons/bi';
 import axios from 'axios';
 import Modal from 'react-modal';
 import ParticularCustomerMachineData from './MachineDataActivity';
@@ -17,7 +16,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    maxWidth: '80%',
+    maxWidth: '100%',
     width: '90%',
     padding: '20px',
     borderRadius: '8px',
@@ -42,12 +41,14 @@ const MachineList = ({ onClose, selectedCustomerMachines, customerProfileData })
   const filteredData = selectedCustomerMachines.filter((machine) => {
     const fieldValue = machine[selectedOption].toString().toLowerCase();
     return fieldValue.includes(searchQuery.toLowerCase());
-  });
+  }).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
   const handleMachineRowClick = (machine) => {
-    console.log(machine.machine_id);
+    const { machine_id } = machine;
+    const { customer_id } = customerProfileData;
+  
     axios
-      .get(`http://localhost:3006/particularCustomerMachineData/${machine.machine_id}`, { withCredentials: true })
+      .get(`http://localhost:3006/particularCustomerMachineData/${machine_id}/${customer_id}`, { withCredentials: true })
       .then((response) => {
         setIsMachineModalOpen(true);
         setSelectedMachineData(response.data);

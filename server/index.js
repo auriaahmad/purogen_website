@@ -30,9 +30,7 @@ const all_registered_machines= require('./src/routes/VisulizationDataRoutes/AllR
 const all_registered_users= require('./src/routes/VisulizationDataRoutes/AllRegisteredUsers');
 const particular_customer_machine_data = require('./src/routes/VisulizationDataRoutes/ParticularCustomerMachineData')
 const particular_customer_machines = require('./src/routes/VisulizationDataRoutes/ParticularCustomerMachines')
-// const all_registered_machines= require('./src/routes/VisulizationDataRoutes/AllRegisteredCustomers');
-// const all_registered_users= require('./src/routes/VisulizationDataRoutes/AllRegisteredCustomers');
-// const user_registration = require('./src/routes/commonRoutes/Registration');
+const particular_user_machine_assigns = require('./src/routes/VisulizationDataRoutes/ParticularUserMachineAssignments')
 
 // Auth Routes
 const signin = require('./src/routes/AuthRoutes/SignIn');
@@ -48,8 +46,8 @@ testConnection();
 // Middleware
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
-// app.use(cookieParser());
-// app.use(verifyToken);
+app.use(cookieParser());
+app.use(verifyToken);
 
 // Registraion Routes
 app.use('/adminReg', admin_registration);
@@ -78,6 +76,7 @@ app.use('/allRegisteredMachines', all_registered_machines);
 app.use('/allRegisteredUsers', all_registered_users);
 app.use('/particularCustomerMachineData', particular_customer_machine_data);
 app.use('/particularCustomerMachine', particular_customer_machines);
+app.use('/userMachineAssignments', particular_user_machine_assigns);
 
  
 

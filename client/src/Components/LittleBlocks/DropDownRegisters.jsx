@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../App.css'; // Import the CSS for styling
+import '../../App.css'; 
 
 const Dropdown = ({ label, options, optionLabel, optionValue, onSelect }) => {
   const [searchQuery, setSearchQuery] = useState('');

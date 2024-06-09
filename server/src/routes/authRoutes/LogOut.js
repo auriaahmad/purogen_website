@@ -1,4 +1,4 @@
-// src/routes/authRoutes.js
+
 
 const express = require('express');
 const router = express.Router();
@@ -7,8 +7,6 @@ const  AdminSession  = require('../../models/AdminSessionsModel');
 // Route to handle user logout
 router.post('/', async (req, res) => {
     try {
-        // Extract the session ID from the request
-        // console.log(req);
         const { admin_session_id } = req.body;
         // Delete the session record from the database
         await AdminSession.destroy({ where: { admin_session_id } });

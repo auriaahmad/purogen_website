@@ -2,19 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Top from './TopSection/Top';
 import Listing from './ListingSection/Listing';
-import CustomersListing from '../../Actions/Customers';
 import '../../../App.css'
 
 const Body = () => {
-
-
-
   const [customers, setCustomers] = useState([]);
-
-
   const [userCount, setUserCount] = useState({ currentDate: 0, currentMonth: 0 });
   useEffect(() => {
-    axios.get('http://localhost:3006/allRegisteredCustomers',{ withCredentials: true })
+    axios.get('http://localhost:3006/allRegisteredCustomers', { withCredentials: true })
       .then(response => {
         const customers = response.data;
         setCustomers(customers);
@@ -45,7 +39,7 @@ const Body = () => {
 
   return (
     <div className='mainContent'>
-      <Top userCount={userCount}/>
+      <Top userCount={userCount} />
       <div className="bottom flex">
         <Listing customers={customers} />
       </div>

@@ -1,9 +1,6 @@
-// customers machine data
-// models/CustomersMachineData.js
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
-const Customer = require('../models/CustomerRegistrationModel'); // Import the Customer model
-const MachineRegistration = require('../models/MachineRegistrationModel'); // Import the MachineRegistration model
+const { sequelize } = require('../config/database');
+const Customer = require('../models/CustomerRegistrationModel'); 
 
 const CustomersMachineData = sequelize.define('CustomersMachineData', {
     customers_machine_data_id: {
@@ -99,11 +96,9 @@ const CustomersMachineData = sequelize.define('CustomersMachineData', {
     }
 }, {
     tableName: 'Customers_Machine_Data_Table',
-    timestamps: false // Set timestamps to false if you want to handle timestamps manually
+    timestamps: false 
 });
 
-// Setting up the foreign key relationships in sequelize
 CustomersMachineData.belongsTo(Customer, { foreignKey: 'customer_id', targetKey: 'customer_id', onDelete: 'SET NULL' });
-// CustomersMachineData.belongsTo(MachineRegistration, { foreignKey: 'machine_id', targetKey: 'machine_id', onDelete: 'SET NULL' });
 
 module.exports = CustomersMachineData;

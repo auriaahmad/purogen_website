@@ -1,8 +1,6 @@
-// models/MachineRegistrationModel.js
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
-const Customer = require('./CustomerRegistrationModel'); // Import the Customer model
-
+const { sequelize } = require('../config/database'); 
+const Customer = require('./CustomerRegistrationModel'); 
 const MachineRegistration = sequelize.define('MachineRegistration', {
     machine_register_id: {
         type: DataTypes.UUID,
@@ -39,10 +37,9 @@ const MachineRegistration = sequelize.define('MachineRegistration', {
     }
 }, {
     tableName: 'Machines_Table',
-    timestamps: false // Set timestamps to false if you want to handle timestamps manually
+    timestamps: false  
 });
 
-// Setting up the foreign key relationship in sequelize
 MachineRegistration.belongsTo(Customer, {
     foreignKey: 'customer_id',
     targetKey: 'customer_id',

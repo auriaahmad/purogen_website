@@ -180,10 +180,10 @@ const MachinesListing = () => {
                 <br />
                 {selectedMachine && (
                     <form className="modal-form">
-                        <label>
+                        {/* <label>
                             Machine ID:
                             <input type="text" name="machine_id" value={machineData.machine_id} onChange={handleEditInputChange} />
-                        </label>
+                        </label> */}
                         <label>
                             Machine Location:
                             <input type="text" name="machine_location" value={machineData.machine_location} onChange={handleEditInputChange} />

@@ -4,6 +4,8 @@ const useUserStore = create((set) => ({
   user: null,
   token: null,
   login: (userData) => {
+    console.log("store");
+    console.log(userData);
     set({ user: userData.user, token: userData.token });
     localStorage.setItem('user', JSON.stringify(userData.user));
     localStorage.setItem('token', userData.token);

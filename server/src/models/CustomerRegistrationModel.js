@@ -1,7 +1,5 @@
-// customer registration data
-// models/CustomerRegistrationData.js
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
+const { sequelize } = require('../config/database');
 
 const CustomerRegistration = sequelize.define('CustomerRegistration', {
     customer_id: {
@@ -52,7 +50,8 @@ const CustomerRegistration = sequelize.define('CustomerRegistration', {
     }
 }, {
     tableName: 'Customers_Table',
-    timestamps: false // Set timestamps to false if you want to handle timestamps manually
+    timestamps: false 
 });
+
 
 module.exports = CustomerRegistration;

@@ -7,7 +7,6 @@ const User = require('../../models/UserRegistrationModel');
 router.get('/', async (req, res) => {
     try {
         const userList = await User.findAll();
-        // Remove the unwanted fields
         const cleanedUserList = userList.map(user => {
             const { password, ...cleanedUser } = user.dataValues;
             return cleanedUser;

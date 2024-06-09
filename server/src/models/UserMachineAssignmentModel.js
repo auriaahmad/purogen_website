@@ -1,9 +1,8 @@
-// models/UserMachineAssignmentModel.js
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
-const Customer = require('./CustomerRegistrationModel'); // Import the Customer model
-const Machine = require('./MachineRegistrationModel'); // Import the Machine model
-const User = require('./UserRegistrationModel'); // Import the User model
+const { sequelize } = require('../config/database'); 
+const Customer = require('./CustomerRegistrationModel'); 
+const Machine = require('./MachineRegistrationModel');
+const User = require('./UserRegistrationModel'); 
 
 const UserMachineAssignment = sequelize.define('UserMachineAssignment', {
     user_machine_assignment_id: {
@@ -36,7 +35,7 @@ const UserMachineAssignment = sequelize.define('UserMachineAssignment', {
             model: User,
             key: 'user_id'
         },
-        onDelete: 'CASCADE' // Delete the assigned machine if the user is deleted
+        onDelete: 'CASCADE' 
     },
     created_at: {
         type: DataTypes.DATE,
@@ -49,7 +48,7 @@ const UserMachineAssignment = sequelize.define('UserMachineAssignment', {
     }
 }, {
     tableName: 'User_Machine_Assignment_Table',
-    timestamps: false // Set timestamps to false if you want to handle timestamps manually
+    timestamps: false 
 });
 
 // Setting up the associations in sequelize

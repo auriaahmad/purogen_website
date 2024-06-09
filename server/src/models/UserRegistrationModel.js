@@ -1,8 +1,6 @@
-// user registration data
-// models/UserRegistrationData.js
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
-const Customer = require('./CustomerRegistrationModel'); // Import the Customer model
+const { sequelize } = require('../config/database'); 
+const Customer = require('./CustomerRegistrationModel'); 
 
 const UserRegistration = sequelize.define('UserRegistration', {
     user_id: {
@@ -58,10 +56,9 @@ const UserRegistration = sequelize.define('UserRegistration', {
     }
 }, {
     tableName: 'Users_Table',
-    timestamps: false // Set timestamps to false if you want to handle timestamps manually
+    timestamps: false 
 });
 
-// Setting up the foreign key relationship in sequelize
 UserRegistration.belongsTo(Customer, {
     foreignKey: 'customer_id',
     targetKey: 'customer_id',

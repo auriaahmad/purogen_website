@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
     try {
         const customerList = await Customer.findAll();
 
-        // Remove the unwanted fields
         const cleanedCustomerList = customerList.map(customer => {
             const { password, ...cleanedCustomer } = customer.dataValues;
             return cleanedCustomer;

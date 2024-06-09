@@ -1,6 +1,5 @@
 import '../../../../App.css';
 import React, { useState } from 'react';
-import { BiSearchAlt } from 'react-icons/bi';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
@@ -17,10 +16,22 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
     setSelectedOption(event.target.value);
   };
 
-  const filteredMachineData = selectedMachineData.filter((machine) => {
-    const fieldValue = machine[selectedOption].toString().toLowerCase();
-    return fieldValue.includes(searchQuery.toLowerCase());
-  });
+  const formatDate = (dateString) => {
+    const options = {
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    };
+    return new Date(dateString).toLocaleDateString('en-GB', options).replace(',', '');
+  };
+
+  const filteredMachineData = selectedMachineData
+    .filter((machine) => {
+      const fieldValue = selectedOption === 'created_at'
+        ? formatDate(machine[selectedOption]).toString().toLowerCase()
+        : machine[selectedOption].toString().toLowerCase();
+      return fieldValue.includes(searchQuery.toLowerCase());
+    })
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); // Sort by date, most recent first
 
   const downloadPDF = () => {
     const doc = new jsPDF();
@@ -44,7 +55,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
         machine.customer_name,
         machine.operator,
         machine.chamber,
-        new Date(machine.created_at).toISOString().split('T')[0],
+        formatDate(machine.created_at)
       ];
       tableRows.push(machineData);
     });
@@ -71,7 +82,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
       "Customer Name": machine.customer_name,
       "Operator": machine.operator,
       "Chamber": machine.chamber,
-      "Run Date": new Date(machine.created_at).toISOString().split('T')[0]
+      "Run Date": formatDate(machine.created_at)
     })));
 
     const wb = XLSX.utils.book_new();
@@ -101,7 +112,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
               <option value="injection_volume">Injection Volume</option>
               <option value="injections">Injections</option>
               <option value="operator">Operator</option>
-              <option value="operator">Chamber</option>
+              <option value="chamber">Chamber</option>
               <option value="created_at">Run Date</option>
             </select>
             <input
@@ -154,7 +165,7 @@ const ParticularCustomerMachineData = ({ onClose, selectedMachineData, customerP
                   <td>{machine.customer_name}</td>
                   <td>{machine.operator}</td>
                   <td>{machine.chamber}</td>
-                  <td>{new Date(machine.created_at).toISOString().split('T')[0]}</td>
+                  <td>{formatDate(machine.created_at)}</td>
                 </tr>
               ))}
             </tbody>

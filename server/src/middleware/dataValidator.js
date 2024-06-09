@@ -1,9 +1,7 @@
-// src/middleware/dataValidator.js
-
 const { validationResult, check } = require('express-validator');
 
 const validateUserData = async (req, res, next) => {
-    // Perform data validation using express-validator
+
     await Promise.all([
         check('username').notEmpty().withMessage('Username is required'),
         check('email').isEmail().withMessage('Invalid email address'),
@@ -17,7 +15,6 @@ const validateUserData = async (req, res, next) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    // Data is validated, proceed to the next middleware
     next();
 };
 

@@ -5,12 +5,15 @@ import { AiOutlineSwapRight } from 'react-icons/ai';
 import axios from 'axios';
 import video from '../../Assets/video.mp4';
 import purogenLogo from '../../Assets/purogen.png';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AssignmentMachineUser = () => {
   const [customers, setCustomers] = useState([]);
   const [users, setUsers] = useState([]);
   const [machines, setMachines] = useState([]);
-  const [searchOption, setSearchOption] = useState('username');
+  const [assignedMachines, setAssignedMachines] = useState([]);
+  const [searchOption, setSearchOption] = useState('box_name');
   const [selectedCustomer, setSelectedCustomer] = useState('');
   const [selectedCustomerName, setSelectedCustomerName] = useState('');
   const [selectedUser, setSelectedUser] = useState('');
@@ -44,6 +47,21 @@ const AssignmentMachineUser = () => {
       setMachines([]);
     }
   }, [selectedCustomer]);
+
+  useEffect(() => {
+    if (selectedUserId) {
+      axios.get(`http://localhost:3006/userMachineAssignments/${selectedUserId}`)
+        .then(response => {
+          const assignedMachineIds = response.data.map(assignment => assignment.machine_register_id);
+          setAssignedMachines(assignedMachineIds);
+          setSelectedMachines(assignedMachineIds);
+        })
+        .catch(error => console.error('Error fetching user machine assignments:', error));
+    } else {
+      setAssignedMachines([]);
+      setSelectedMachines([]);
+    }
+  }, [selectedUserId]);
 
   const handleOptionChange = (e) => {
     setSearchOption(e.target.value);
@@ -79,7 +97,7 @@ const AssignmentMachineUser = () => {
 
   const handleMachineChange = (e) => {
     const machineId = e.target.value;
-    setSelectedMachines(prev => 
+    setSelectedMachines(prev =>
       prev.includes(machineId) ? prev.filter(id => id !== machineId) : [...prev, machineId]
     );
   };
@@ -90,17 +108,27 @@ const AssignmentMachineUser = () => {
     const assignments = selectedMachines.map(machineId => ({
       customer_id: selectedCustomer,
       machine_register_id: machineId,
-      user_id: selectedUserId
+      user_id: selectedUserId,
+      action: 'assign'
     }));
 
-    axios.post('http://localhost:3006/userMachineAssign', assignments)
+    const unassignments = assignedMachines.filter(machineId => !selectedMachines.includes(machineId)).map(machineId => ({
+      customer_id: selectedCustomer,
+      machine_register_id: machineId,
+      user_id: selectedUserId,
+      action: 'unassign'
+    }));
+
+    axios.post('http://localhost:3006/userMachineAssign', [...assignments, ...unassignments])
       .then(response => {
-        alert('Machines assigned successfully');
+        toast.success('Machines assigned/unassigned successfully');
         clearFields();
       })
-      .catch(error => console.error('Error assigning machines:', error));
+      .catch(error => {
+        console.error('Error assigning/unassigning machines:', error);
+        toast.error('Error assigning/unassigning machines');
+      });
   };
-
   const clearFields = () => {
     setSelectedCustomer('');
     setSelectedCustomerName('');
@@ -110,9 +138,10 @@ const AssignmentMachineUser = () => {
     setMachineFilter('');
     setUsers([]);
     setMachines([]);
+    setAssignedMachines([]);
   };
 
-  const filteredCustomers = customers.filter(customer => 
+  const filteredCustomers = customers.filter(customer =>
     customer[searchOption].toLowerCase().includes(selectedCustomerName.toLowerCase())
   );
 
@@ -129,7 +158,7 @@ const AssignmentMachineUser = () => {
             <br />
             <img src={purogenLogo} alt="Purogen Logo" />
             <br />
-            <h2 className="title">Assign Machines to User Here!</h2>
+            <h2 className="title">Assign or Unassign Machines to a User Here!</h2>
           </div>
         </div>
 
@@ -193,7 +222,7 @@ const AssignmentMachineUser = () => {
                 </datalist>
               </div>
             </div>
-            
+
             <div className="inputDiv">
               <label htmlFor="machineSearch">Search Machine:</label>
               <input
@@ -239,6 +268,7 @@ const AssignmentMachineUser = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

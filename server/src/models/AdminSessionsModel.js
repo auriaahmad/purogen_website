@@ -1,9 +1,6 @@
-// admin sessions data
-// models/AdminSessions.js
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database'); // Import the configured Sequelize instance
-const Admin = require('./AdminRegistrationModel'); // Import the Admin model
-
+const { sequelize } = require('../config/database'); 
+const Admin = require('./AdminRegistrationModel'); 
 const AdminSessions = sequelize.define('AdminSessions', {
     admin_session_id: {
         type: DataTypes.STRING(255),
@@ -31,7 +28,6 @@ const AdminSessions = sequelize.define('AdminSessions', {
     timestamps: false // Set timestamps to false since we are handling them manually
 });
 
-// Setting up the foreign key relationship in sequelize
 AdminSessions.belongsTo(Admin, { foreignKey: 'admin_id', targetKey: 'admin_id', onDelete: 'CASCADE' });
 
 module.exports = AdminSessions;
