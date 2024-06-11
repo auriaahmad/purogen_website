@@ -4,7 +4,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 const verifyToken = (req, res, next) => {
     try {
-        const excludedRoutes = ['/signin','/logout'];
+        const excludedRoutes = ['/signin','/logout','/signin/customer','/signin/user','/logout/customer','/logout/user'];
         if (excludedRoutes.includes(req.path)) {
             // Skip the middleware and move to the next middleware/route handler
             return next();

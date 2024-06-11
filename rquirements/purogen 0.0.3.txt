@@ -1,0 +1,36 @@
+Add TMP1(Bool), TMP2(String), TMP3(Int)
+
+
+Admin Dashboard will have,
+
+1. Dashboard Page
+2. Registration Customers (Show all Customers data with Show, Edit, Delete option + Create New Customer (At right Top corner) )
+3. Registration Users (Show all Users data with Show, Edit, Delete option + Create New User (At right Top corner) )
+Registration Machines (Show all Machines data with Show, Edit, Delete option + Create New Machine (At right Top corner) )
+
+Registration PuroGen Admins (Show all Admins data with Show, Edit, Delete option + Create New Admin (At right Top corner) )
+
+
+================================================================================================
+
+Customers Dashboard will have,
+
+Dashboard Page
+Registration Users (Show all Users data with Show, Edit, Delete option + Create New User (At right Top corner) )
+
+
+================================================================================================
+
+User's Dashboard
+Show assigned Machines List, Click to see their data.
+
+================================================================================================
+
+EXCEL & PDF
+
+===============================================================================================
+
+Show, Edit, Delete
+
+===============================================================================================
+

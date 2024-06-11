@@ -32,9 +32,21 @@ const particular_customer_machine_data = require('./src/routes/VisulizationDataR
 const particular_customer_machines = require('./src/routes/VisulizationDataRoutes/ParticularCustomerMachines')
 const particular_user_machine_assigns = require('./src/routes/VisulizationDataRoutes/ParticularUserMachineAssignments')
 
-// Auth Routes
+// Visulization Data Routes Cutomers
+const particular_customer_all_users = require('./src/routes/VisulizationDataRoutes/cutomer/ParticularCustomerAllUsers')
+
+// Auth Routes Admin
 const signin = require('./src/routes/AuthRoutes/SignIn');
 const logout = require('./src/routes/AuthRoutes/LogOut');
+
+// Auth Routes Customer
+const signinCustomer = require('./src/routes/AuthRoutes/SignInCustomers');
+const logoutCustomer = require('./src/routes/AuthRoutes/LogOutCustomers');
+
+// Auth Routes User
+const signinUser = require('./src/routes/AuthRoutes/SignInUsers');
+const logoutUser = require('./src/routes/AuthRoutes/LogOutUsers');
+ 
 
 
 const verifyToken = require('./src/middleware/tokenValidator')
@@ -47,7 +59,7 @@ testConnection();
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
-app.use(verifyToken);
+// app.use(verifyToken);
 
 // Registraion Routes
 app.use('/adminReg', admin_registration);
@@ -78,11 +90,21 @@ app.use('/particularCustomerMachineData', particular_customer_machine_data);
 app.use('/particularCustomerMachine', particular_customer_machines);
 app.use('/userMachineAssignments', particular_user_machine_assigns);
 
+// Visulization Data Routes Customers
+app.use('/particularCustomerAllUsers', particular_customer_all_users )
  
 
-// Auth Routes
+// Auth Routes Admin
 app.use('/signin', signin);
 app.use('/logout', logout);
+
+// Auth Routes Customer
+app.use('/signin', signinCustomer);
+app.use('/logout', logoutCustomer);
+
+// Auth Routes User
+app.use('/signin', signinUser);
+app.use('/logout', logoutUser);
 
 const PORT = process.env.PORT || 3006;
 app.listen(PORT, () => {
