@@ -7,10 +7,6 @@ import { BsQuestionCircle } from 'react-icons/bs';
 import { BiLogOutCircle } from 'react-icons/bi';
 import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 import Body from '../BodySection/Body';
-import RegisterCustomer from '../../Register/Customer/RegisterCustomer';
-import RegisterMachine from '../../Register/Machine/RegisterMachine';
-import RegisterUser from '../../Register/User/RegisterUser';
-import CustomersListing from '../../Actions/Customers';
 import MachinesListing from '../../Actions/Machines';
 import UsersListing from '../../Actions/Users';
 import AssignmentMachineUser from '../../AssignmentMU/UserMachineAssignment';
@@ -18,7 +14,6 @@ import useUserStore from '../../../store/store';
 import axios from 'axios';
 const Sidebar = () => {
   const [activeTab, setActiveTab] = useState(localStorage.getItem('activeTab') || 'dashboard');
-  // const [isRegistrationsOpen, setIsRegistrationsOpen] = useState(false);
   const [isActionOpen, setIsActionOpen] = useState(false);
   const logout = useUserStore(state => state.logout); 
 
@@ -29,10 +24,6 @@ const Sidebar = () => {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
-
-  // const handleRegistrationsClick = () => {
-  //   setIsRegistrationsOpen(!isRegistrationsOpen);
-  // };
 
   const handleVisualizeClick = () => {
     setIsActionOpen(!isActionOpen);
@@ -73,38 +64,6 @@ const Sidebar = () => {
                   <span className="smallText">Dashboard</span>
                 </a>
               </li>
-
-              {/* <li className="listItem">
-                <a onClick={handleRegistrationsClick} className="menuLink flex">
-                  {isRegistrationsOpen ? <CiSquareMinus className="icon" style={{ color: 'green' }}/> : <CiSquarePlus className="icon" style={{ color: 'green' }}/>}
-                  <span className="smallText" style={{color: 'green'}} >Registrations</span>
-                </a>
-              </li> */}
-
-              {/* {isRegistrationsOpen && (
-                <ul className="menuLists grid" style={{ paddingLeft: '20px' }}>
-                  <li className={`listItem ${activeTab === 'customer' ? 'active' : ''}`}>
-                    <a onClick={() => handleTabClick('customer')} className="menuLink flex">
-                      <MdDeliveryDining className="icon" />
-                      <span className="smallText">Reg. Customer</span>
-                    </a>
-                  </li> */}
-
-                  {/* <li className={`listItem ${activeTab === 'machine' ? 'active' : ''}`}>
-                    <a onClick={() => handleTabClick('machine')} className="menuLink flex">
-                      <MdDeliveryDining className="icon" />
-                      <span className="smallText">Reg. Machine</span>
-                    </a>
-                  </li>
-
-                  <li className={`listItem ${activeTab === 'user' ? 'active' : ''}`}>
-                    <a onClick={() => handleTabClick('user')} className="menuLink flex">
-                      <MdDeliveryDining className="icon" />
-                      <span className="smallText">Reg. User</span>
-                    </a>
-                  </li>
-                </ul>
-              )} */}
               
               <li className={`listItem ${activeTab === 'assignment_machines_users' ? 'active' : ''}`}>
                 <a onClick={() => handleTabClick('assignment_machines_users')} className="menuLink flex">
@@ -122,12 +81,6 @@ const Sidebar = () => {
 
               {isActionOpen && (
                 <ul className="menuLists grid" style={{ paddingLeft: '20px' }}>
-                  {/* <li className={`listItem ${activeTab === 'VisualiazeCustomersListing' ? 'active' : ''}`}>
-                    <a onClick={() => handleTabClick('VisualiazeCustomersListing')} className="menuLink flex">
-                      <MdDeliveryDining className="icon" />
-                      <span className="smallText">Edt/Del. Customers</span>
-                    </a>
-                  </li> */}
 
                   <li className={`listItem ${activeTab === 'visualizeMachinesListing' ? 'active' : ''}`}>
                     <a onClick={() => handleTabClick('visualizeMachinesListing')} className="menuLink flex">
@@ -172,10 +125,6 @@ const Sidebar = () => {
         </div>
 
         {activeTab === 'dashboard' && <Body />}
-        {/* {activeTab === 'customer' && <RegisterCustomer />} */}
-        {/* {activeTab === 'machine' && <RegisterMachine />} */}
-        {/* {activeTab === 'user' && <RegisterUser />} */}
-        {/* {activeTab === 'VisualiazeCustomersListing' && <CustomersListing />} */}
         {activeTab === 'visualizeMachinesListing' && <MachinesListing />}
         {activeTab === 'visualizeUsersListing' && <UsersListing />}
         {activeTab === 'assignment_machines_users' && <AssignmentMachineUser />}  

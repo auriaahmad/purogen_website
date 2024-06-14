@@ -29,6 +29,7 @@ const Listing = ({ machines }) => {
   const [selectedOption, setSelectedOption] = useState('machine_id');
   const [selectedMachineData, setSelectedMachineData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const customerProfileData = JSON.parse(localStorage.getItem('user'));
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -44,6 +45,7 @@ const Listing = ({ machines }) => {
   });
 
   const handleRowClick = (machine) => {
+
     const customer_id = JSON.parse(localStorage.getItem('user')).customer_id;
     axios.get(`http://localhost:3006/particularCustomerMachineData/${machine.machine_id}/${customer_id}`, { withCredentials: true })
       .then(response => {
@@ -114,6 +116,7 @@ const Listing = ({ machines }) => {
           <ParticularCustomerMachineData
             onClose={handleCloseModal}
             selectedMachineData={selectedMachineData}
+            customerProfileData = {customerProfileData}
           />
         )}
       </Modal>

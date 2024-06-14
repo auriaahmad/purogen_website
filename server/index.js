@@ -30,10 +30,13 @@ const all_registered_machines= require('./src/routes/VisulizationDataRoutes/AllR
 const all_registered_users= require('./src/routes/VisulizationDataRoutes/AllRegisteredUsers');
 const particular_customer_machine_data = require('./src/routes/VisulizationDataRoutes/ParticularCustomerMachineData')
 const particular_customer_machines = require('./src/routes/VisulizationDataRoutes/ParticularCustomerMachines')
-const particular_user_machine_assigns = require('./src/routes/VisulizationDataRoutes/ParticularUserMachineAssignments')
+const particular_user_machines = require('./src/routes/VisulizationDataRoutes/ParticularUserAllMachines')
 
 // Visulization Data Routes Cutomers
 const particular_customer_all_users = require('./src/routes/VisulizationDataRoutes/cutomer/ParticularCustomerAllUsers')
+
+// Visulization Data Routes User
+const particular_user_machine_data = require('./src/routes/VisulizationDataRoutes/ParticularUserMachineData')
 
 // Auth Routes Admin
 const signin = require('./src/routes/AuthRoutes/SignIn');
@@ -81,18 +84,25 @@ app.use('/editMachine', edit_machine);
 app.use('/editUser', edit_user);
 
 
-// Visulization Data Routes
+// Visulization Routes
 app.use('/allCustomerMachineData', all_customers_machine_data);
 app.use('/allRegisteredCustomers', all_registered_customers);
 app.use('/allRegisteredMachines', all_registered_machines);
 app.use('/allRegisteredUsers', all_registered_users);
 app.use('/particularCustomerMachineData', particular_customer_machine_data);
 app.use('/particularCustomerMachine', particular_customer_machines);
-app.use('/userMachineAssignments', particular_user_machine_assigns);
+// app.use('/userMachineAssignments', particular_user_machine_assigns);
 
-// Visulization Data Routes Customers
+// Visulization Routes Customers
 app.use('/particularCustomerAllUsers', particular_customer_all_users )
+
+
+// Visulization Routes Users
+app.use('/particularUserAllMachines', particular_user_machines )
+app.use('/particularUserMachineData', particular_user_machine_data )
+
  
+
 
 // Auth Routes Admin
 app.use('/signin', signin);

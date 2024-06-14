@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database'); 
-const Customer = require('./CustomerRegistrationModel'); 
-const Machine = require('./MachineRegistrationModel');
-const User = require('./UserRegistrationModel'); 
+const { sequelize } = require('../config/database');
+const Customer = require('./CustomerRegistrationModel');
+const MachineRegistration = require('./MachineRegistrationModel');
+const User = require('./UserRegistrationModel');
 
 const UserMachineAssignment = sequelize.define('UserMachineAssignment', {
     user_machine_assignment_id: {
@@ -23,7 +23,7 @@ const UserMachineAssignment = sequelize.define('UserMachineAssignment', {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: Machine,
+            model: MachineRegistration,
             key: 'machine_register_id'
         },
         onDelete: 'CASCADE'
@@ -55,8 +55,8 @@ const UserMachineAssignment = sequelize.define('UserMachineAssignment', {
 Customer.hasMany(UserMachineAssignment, { foreignKey: 'customer_id', onDelete: 'CASCADE' });
 UserMachineAssignment.belongsTo(Customer, { foreignKey: 'customer_id', onDelete: 'CASCADE' });
 
-Machine.hasMany(UserMachineAssignment, { foreignKey: 'machine_register_id', onDelete: 'CASCADE' });
-UserMachineAssignment.belongsTo(Machine, { foreignKey: 'machine_register_id', onDelete: 'CASCADE' });
+MachineRegistration.hasMany(UserMachineAssignment, { foreignKey: 'machine_register_id', onDelete: 'CASCADE' });
+UserMachineAssignment.belongsTo(MachineRegistration, { foreignKey: 'machine_register_id', onDelete: 'CASCADE' });
 
 User.hasMany(UserMachineAssignment, { foreignKey: 'user_id', onDelete: 'CASCADE' });
 UserMachineAssignment.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });

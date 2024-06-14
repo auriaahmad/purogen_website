@@ -1,0 +1,29 @@
+@import './styles/base/typography.scss';
+
+@import './styles/base/root.scss';
+
+@import './styles/base/utilites.scss';
+
+@import './styles/register/register.scss';
+
+@import './styles/signin/signin.scss';
+
+@import './styles/dashboard/dashboard.scss';
+
+@import './styles/mediaQueries/mediaQueries.scss';
+
+@import './styles/dashboard/sidebar/sidebar.scss';
+
+@import './styles/dashboard/bodySection/body.scss';
+
+@import './styles/dashboard/bodySection/activity/activity.scss';
+
+@import './styles/dashboard/bodySection/listings/listing.scss';
+
+@import './styles/dashboard/bodySection/top/top.scss';
+
+@import './styles/LittleBlocks/download_buttons.scss';
+
+@import './styles/LittleBlocks/edit_delete_buttons.scss';
+
+@import './styles/Modals/actionModals.scss';

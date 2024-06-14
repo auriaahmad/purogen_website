@@ -76,6 +76,8 @@ const Login = () => {
                 <div className="videoDiv">
                     <video src={video} autoPlay muted loop></video>
                     <div className="textDiv">
+                        <h2 className='title'>Customer Dashboard</h2>
+                        <br />
                         <img src={purogenLogo} alt="Purogen Logo" />
                         <h2 className="title">THE SCIENCE OF PURE!</h2>
                         <p>TECHNOLOGY WORKING FOR YOU</p>

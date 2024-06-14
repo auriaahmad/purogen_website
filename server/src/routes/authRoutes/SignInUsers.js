@@ -42,6 +42,7 @@ router.post('/user', async (req, res) => {
         // Include user session ID in the user object
         
         // Return success response with modified user object
+        user.customer_id = undefined;
         user.password = undefined;
         user.created_at = undefined;
         user.updated_at = undefined;

@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Login from '../Components/Login/Login';
 import Dashboard from '../Components/Dashboard/Dashboard';
 import PrivateRoute from './privateRoutes';
+import NotFound from '../Components/NotFound/NotFound';
 const routes = createBrowserRouter([
   {
     path: '/',
@@ -17,7 +18,7 @@ const routes = createBrowserRouter([
   },
   {
     path: '*',
-    element: <div><h1>Page not found</h1></div>
+    element: <NotFound />
   },
 ]);
 

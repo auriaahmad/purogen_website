@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database'); 
 const Customer = require('./CustomerRegistrationModel'); 
+
 const MachineRegistration = sequelize.define('MachineRegistration', {
     machine_register_id: {
         type: DataTypes.UUID,

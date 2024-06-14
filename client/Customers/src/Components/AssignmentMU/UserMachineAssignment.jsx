@@ -33,7 +33,7 @@ const AssignmentMachineUser = () => {
 
   useEffect(() => {
     if (selectedUserId) {
-      axios.get(`http://localhost:3006/userMachineAssignments/${selectedUserId}`)
+      axios.get(`http://localhost:3006/particularUserAllMachines/${selectedUserId}`)
         .then(response => {
           const assignedMachineIds = response.data.map(assignment => assignment.machine_register_id);
           setAssignedMachines(assignedMachineIds);
