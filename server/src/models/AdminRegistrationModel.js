@@ -44,7 +44,7 @@ const AdminRegistration = sequelize.define('AdminRegistration', {
         onUpdate: DataTypes.NOW
     }
 }, {
-    tableName: 'Admins_Table',
+    tableName: 'admins_table',
     timestamps: false 
 });
 

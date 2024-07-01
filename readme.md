@@ -584,3 +584,18 @@ END
 
 </details>
 
+<!-- --------------------------------------------- -->
+
+# 1. DevOps
+## 2. Docker
+
+<details>
+<summary>Building Docker Images</summary>
+
+```bash
+docker build -t <image name> .
+```
+
+
+
+</details>

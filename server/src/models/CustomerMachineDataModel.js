@@ -95,7 +95,7 @@ const CustomersMachineData = sequelize.define('CustomersMachineData', {
         onUpdate: DataTypes.NOW
     }
 }, {
-    tableName: 'Customers_Machine_Data_Table',
+    tableName: 'customers_machine_data_table',
     timestamps: false 
 });
 

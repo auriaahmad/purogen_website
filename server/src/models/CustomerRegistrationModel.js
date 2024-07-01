@@ -49,7 +49,7 @@ const CustomerRegistration = sequelize.define('CustomerRegistration', {
         onUpdate: DataTypes.NOW
     }
 }, {
-    tableName: 'Customers_Table',
+    tableName: 'customers_table',
     timestamps: false 
 });
 

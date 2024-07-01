@@ -47,7 +47,7 @@ const UserMachineAssignment = sequelize.define('UserMachineAssignment', {
         onUpdate: DataTypes.NOW
     }
 }, {
-    tableName: 'User_Machine_Assignment_Table',
+    tableName: 'user_machine_assignment_table',
     timestamps: false 
 });
 

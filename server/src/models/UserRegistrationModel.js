@@ -55,7 +55,7 @@ const UserRegistration = sequelize.define('UserRegistration', {
         onUpdate: DataTypes.NOW
     }
 }, {
-    tableName: 'Users_Table',
+    tableName: 'users_table',
     timestamps: false 
 });
 

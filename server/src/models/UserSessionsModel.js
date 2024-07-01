@@ -24,7 +24,7 @@ const UserSessions = sequelize.define('UserSessions', {
         allowNull: false
     }
 }, {
-    tableName: 'User_Sessions',
+    tableName: 'user_sessions',
     timestamps: false // Set timestamps to false since we are handling them manually
 });
 

@@ -37,7 +37,7 @@ const MachineRegistration = sequelize.define('MachineRegistration', {
         onUpdate: DataTypes.NOW
     }
 }, {
-    tableName: 'Machines_Table',
+    tableName: 'machines_table',
     timestamps: false  
 });
 

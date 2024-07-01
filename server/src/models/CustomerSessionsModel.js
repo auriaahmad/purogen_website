@@ -24,7 +24,7 @@ const CustomerSessions = sequelize.define('CustomerSessions', {
         allowNull: false
     }
 }, {
-    tableName: 'Customer_Sessions',
+    tableName: 'customer_sessions',
     timestamps: false // Set timestamps to false since we are handling them manually
 });
 

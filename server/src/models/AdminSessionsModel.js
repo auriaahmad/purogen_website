@@ -24,7 +24,7 @@ const AdminSessions = sequelize.define('AdminSessions', {
         allowNull: false
     }
 }, {
-    tableName: 'Admin_Sessions',
+    tableName: 'admin_sessions',
     timestamps: false // Set timestamps to false since we are handling them manually
 });
 
